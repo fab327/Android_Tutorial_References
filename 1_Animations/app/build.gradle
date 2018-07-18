@@ -2,43 +2,45 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion '27.0.3'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
-  defaultConfig {
-    applicationId "com.raywenderlich.rocketlaunch"
-    minSdkVersion 15
-    targetSdkVersion 26
-    versionCode 1
-    versionName "1.0"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    defaultConfig {
+        applicationId "com.raywenderlich.rocketlaunch"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
     }
-  }
-  sourceSets{
-    main.java.srcDirs += 'src/main/kotlin'
-  }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:26.1.0'
-  compile 'com.android.support:design:26.1.0'
-  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.android.support:design:27.1.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    debugImplementation 'com.facebook.sonar:sonar:0.6.11'
 }
 
 buildscript {
-  ext.kotlin_version = '1.1.51'
+    ext.kotlin_version = '1.2.51'
 
-  repositories {
-    mavenCentral()
-  }
+    repositories {
+        mavenCentral()
+    }
 
-  dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-  }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
