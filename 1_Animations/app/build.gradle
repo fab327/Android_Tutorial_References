@@ -4,10 +4,10 @@ apply plugin: 'kotlin-android'
 android {
     signingConfigs {
         release {
-            keyAlias 'key'
-            keyPassword 'keystore'
-            storeFile file('/Users/fab/Documents/AndroidStudioProjects/keystore')
-            storePassword 'keystore'
+            storeFile rootProject.file('app/keystore.jks')
+            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
+            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
+            keyPassword System.getProperty("APPCENTER_KEY_PASSWORD")
         }
     }
     compileSdkVersion 27
@@ -24,17 +24,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            ndk {
-                abiFilters 'x86', 'armeabi-v7a'
-            }
         }
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-    }
-
-    packagingOptions {
-
     }
 }
 
