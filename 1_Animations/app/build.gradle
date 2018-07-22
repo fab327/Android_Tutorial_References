@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     signingConfigs {
-        release {
-            storeFile rootProject.file('app/keystore.jks')
-            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
-            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
-            keyPassword System.getProperty("APPCENTER_KEY_PASSWORD")
-        }
+//        release {
+//            storeFile rootProject.file('app/keystore.jks')
+//            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
+//            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
+//            keyPassword System.getProperty("APPCENTER_KEY_PASSWORD")
+//        }
     }
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -23,7 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
     sourceSets {
