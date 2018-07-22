@@ -2,9 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'key'
+            keyPassword 'keystore'
+            storeFile file('/Users/fab/Documents/AndroidStudioProjects/keystore')
+            storePassword 'keystore'
+        }
+    }
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
-
     defaultConfig {
         applicationId "com.raywenderlich.rocketlaunch"
         minSdkVersion 19
@@ -16,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     sourceSets {
@@ -24,13 +32,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.android.support:design:27.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    debugImplementation 'com.facebook.sonar:sonar:0.6.11'
+    implementation 'com.facebook.sonar:sonar:0.6.11'
 }
 
 buildscript {

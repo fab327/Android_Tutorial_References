@@ -20,8 +20,8 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        SoLoader.init(this, false)
         if (BuildConfig.DEBUG && SonarUtils.shouldEnableSonar(this)) {
+            SoLoader.init(this, false)
             val client = AndroidSonarClient.getInstance(this)
             val descriptorMapping = DescriptorMapping.withDefaults()
             val networkSonarPlugin = NetworkSonarPlugin()
