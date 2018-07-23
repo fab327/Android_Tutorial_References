@@ -1,8 +1,8 @@
-package com.raywenderlich.rocketlauncher.animationactivities
+package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
-import com.raywenderlich.rocketlauncher.R
+import com.justfabcodes.rocketlauncher.R
 
 class XmlAnimationActivity : BaseAnimationActivity() {
     override fun onStartAnimation() {

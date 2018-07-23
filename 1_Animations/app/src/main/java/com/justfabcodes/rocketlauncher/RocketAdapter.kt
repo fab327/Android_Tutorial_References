@@ -1,4 +1,4 @@
-package com.raywenderlich.rocketlauncher
+package com.justfabcodes.rocketlauncher
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.raywenderlich.rocketlauncher.animationactivities
+package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.ObjectAnimator
 

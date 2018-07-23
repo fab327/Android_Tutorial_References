@@ -1,10 +1,10 @@
-package com.raywenderlich.rocketlauncher.animationactivities
+package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.support.v4.content.ContextCompat
-import com.raywenderlich.rocketlauncher.R
+import com.justfabcodes.rocketlauncher.R
 
 class ColorAnimationActivity : BaseAnimationActivity() {
     override fun onStartAnimation() {

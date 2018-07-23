@@ -1,11 +1,11 @@
-package com.raywenderlich.rocketlauncher.animationactivities
+package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.view.View
 
-import com.raywenderlich.rocketlauncher.R
+import com.justfabcodes.rocketlauncher.R
 
 abstract class BaseAnimationActivity : AppCompatActivity() {
   protected lateinit var rocket: View

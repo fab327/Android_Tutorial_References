@@ -1,4 +1,4 @@
-package com.raywenderlich.rocketlauncher
+package com.justfabcodes.rocketlauncher
 
 import android.content.Intent
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.raywenderlich.rocketlauncher">
+    package="com.justfabcodes.rocketlauncher">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.MainListActivity"
+            android:name="com.justfabcodes.rocketlauncher.MainListActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,51 +24,51 @@
         </activity>
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.NoAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.NoAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.LaunchRocketValueAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketValueAnimatorAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.RotateRocketAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.RotateRocketAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.AccelerateRocketAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.AccelerateRocketAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.LaunchRocketObjectAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketObjectAnimatorAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.ColorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.ColorAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.LaunchAndSpinAnimatorSetAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchAndSpinAnimatorSetAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.FlyWithDogeAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyWithDogeAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.WithListenerAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.WithListenerAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.FlyThereAndBackAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyThereAndBackAnimationActivity"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.raywenderlich.rocketlauncher.animationactivities.XmlAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.XmlAnimationActivity"
             android:label="@string/app_name" />
 
     </application>

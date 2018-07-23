@@ -1,4 +1,4 @@
-package com.raywenderlich.rocketlauncher.animationactivities
+package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.ValueAnimator
 import android.view.animation.AccelerateInterpolator
