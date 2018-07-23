@@ -19,12 +19,12 @@ class MainListActivity : AppCompatActivity() {
 
         val items = ArrayList<RocketAnimationItem>()
 
-        items.add(
-                RocketAnimationItem(
-                        getString(R.string.title_no_animation),
-                        Intent(this, NoAnimationActivity::class.java)
-                )
-        )
+//        items.add(
+//                RocketAnimationItem(
+//                        getString(R.string.title_no_animation),
+//                        Intent(this, NoAnimationActivity::class.java)
+//                )
+//        )
 
         items.add(
                 RocketAnimationItem(
