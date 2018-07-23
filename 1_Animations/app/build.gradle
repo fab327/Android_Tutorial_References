@@ -2,14 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    signingConfigs {
-//        release {
-//            storeFile rootProject.file('app/keystore.jks')
-//            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
-//            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
-//            keyPassword System.getProperty("APPCENTER_KEY_PASSWORD")
-//        }
-    }
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
@@ -18,12 +10,12 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release
         }
     }
     sourceSets {
@@ -38,6 +30,15 @@ dependencies {
     compile 'com.android.support:design:27.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.facebook.sonar:sonar:0.6.11'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }
 
 buildscript {
