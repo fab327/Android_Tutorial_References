@@ -172,6 +172,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     /*
      * Ask for location permission
+     *
+     * https://developer.android.com/training/permissions/requesting
      */
     private fun checkPermissionAndStart() {
         if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -195,7 +197,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     }
 
     /*
-     * Map pins
+     * Markers
+     *
+     * https://developers.google.com/maps/documentation/android-sdk/marker#customize_a_marker
      */
     private fun placeMarkerOnMap(location: LatLng) {
         val markerOptions = MarkerOptions().position(location)
@@ -268,6 +272,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     /*
      * Place picker with a built-in UI component provided by the support library
+     *
+     * https://developers.google.com/places/android-sdk/intro
      */
     private fun loadPlacePicker() {
         val builder = PlacePicker.IntentBuilder()
