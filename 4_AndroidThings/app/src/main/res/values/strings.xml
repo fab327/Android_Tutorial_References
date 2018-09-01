@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Android Things Tutorial</string>
+    <string name="activity_button_input_driver">Test Button Input Driver</string>
+    <string name="activity_rainbow_hat_driver">Test with Rainbow Hat Driver</string>
+    <string name="activity_inputs_components">Test with input components</string>
+    <string name="activity_display_components">Test with display components</string>
+    <string name="activity_other_components">Test with other components</string>
+</resources>
