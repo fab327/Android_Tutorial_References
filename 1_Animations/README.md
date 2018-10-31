@@ -1,0 +1,2 @@
+- Sonar -> https://fbsonar.com/docs/getting-started.html
+- Android animations
