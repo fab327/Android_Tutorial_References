@@ -1,0 +1,3 @@
+- Google Maps APIs (Fused location, places, map pins, )
+- Geocoder
+- Runtime permissions
