@@ -1,2 +1,4 @@
 - Sonar -> https://fbsonar.com/docs/getting-started.html
-- Android animations
+- AppCenter setup
+
+- Different types of Android animations
