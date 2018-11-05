@@ -25,7 +25,9 @@ abstract class SunshineDatabase: RoomDatabase() {
         fun getInstance(context: Context): SunshineDatabase? {
             if (sInstance == null) {
                 synchronized(LOCK) {
-                    sInstance = Room.databaseBuilder(context.applicationContext, SunshineDatabase::class.java, DATABSE_NAME).build()
+                    sInstance = Room.databaseBuilder(context.applicationContext, SunshineDatabase::class.java, DATABSE_NAME)
+//                            .allowMainThreadQueries()
+                            .build()
                 }
             }
             return sInstance
