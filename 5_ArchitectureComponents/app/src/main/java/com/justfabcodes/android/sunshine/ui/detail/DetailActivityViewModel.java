@@ -17,6 +17,7 @@
 package com.justfabcodes.android.sunshine.ui.detail;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.justfabcodes.android.sunshine.data.SunshineRepository;
@@ -31,6 +32,7 @@ public class DetailActivityViewModel extends ViewModel {
 
     // Weather forecast the user is looking at
     private LiveData<WeatherEntry> mWeather;
+    private MediatorLiveData<WeatherEntry> mediatorWeather; //-> MediatorLiveData can hold data from multiple source
 
     private final SunshineRepository mRepository;
 
