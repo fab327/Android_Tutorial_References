@@ -5,4 +5,4 @@ Tutorial on the Drag and Drop APIs
 
 Handling of:
 - OnTouchListener#onTouch() -> [MainActivity](/13_DragAndDrop/app/src/main/java/com/justfabcodes/draganddrop/MainActivity.kt)
-- OnDragListener#onDrag() -> [MainActivity](https://github.com/fab327/Android_Tutorial_References/blob/master/13_DragAndDrop/app/src/main/java/com/justfabcodes/draganddrop/MainActivity.kt)
+- OnDragListener#onDrag() -> [MainActivity](/13_DragAndDrop/app/src/main/java/com/justfabcodes/draganddrop/MainActivity.kt)
