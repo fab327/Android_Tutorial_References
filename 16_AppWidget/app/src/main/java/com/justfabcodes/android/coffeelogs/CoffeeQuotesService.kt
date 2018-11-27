@@ -1,4 +1,4 @@
-package com.raywenderlich.android.coffeelogs
+package com.justfabcodes.android.coffeelogs
 
 import android.app.Service
 import android.appwidget.AppWidgetManager

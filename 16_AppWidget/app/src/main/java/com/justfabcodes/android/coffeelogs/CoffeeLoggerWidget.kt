@@ -1,4 +1,4 @@
-package com.raywenderlich.android.coffeelogs
+package com.justfabcodes.android.coffeelogs
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager

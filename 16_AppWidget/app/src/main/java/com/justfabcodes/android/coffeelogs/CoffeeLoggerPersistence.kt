@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.coffeelogs
+package com.justfabcodes.android.coffeelogs
 
 import android.content.Context
 import java.text.SimpleDateFormat
@@ -37,7 +37,7 @@ import java.util.*
 class CoffeeLoggerPersistence(private val context: Context) {
 
     companion object {
-        private const val PREFS_NAME = "com.raywenderlich.android.coffeelogs.CoffeeLoggerWidget"
+        private const val PREFS_NAME = "com.justfabcodes.android.coffeelogs.CoffeeLoggerWidget"
         private const val PREF_PREFIX_KEY = "coffee_logger"
         private const val PREF_LIMIT_PREFIX = "coffee_limit_"
     }

@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.coffeelogs
+package com.justfabcodes.android.coffeelogs
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName

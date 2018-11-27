@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.raywenderlich.android.coffeelogs">
+    package="com.justfabcodes.android.coffeelogs">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.justfabcodes.android.coffeelogs.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".CoffeeLoggerWidget">
+        <receiver android:name="com.justfabcodes.android.coffeelogs.CoffeeLoggerWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -27,14 +27,14 @@
                 android:resource="@xml/coffee_logger_widget_info" />
         </receiver>
 
-        <activity android:name=".CoffeeLoggerWidgetConfigureActivity">
+        <activity android:name="com.justfabcodes.android.coffeelogs.CoffeeLoggerWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
         <service
-            android:name=".CoffeeQuotesService"
+            android:name="com.justfabcodes.android.coffeelogs.CoffeeQuotesService"
             android:enabled="true"
             android:exported="true"/>
     </application>
