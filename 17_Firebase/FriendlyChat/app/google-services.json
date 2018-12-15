@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "573260421268-arl82k677ickf3r281u8g9c02suu54oo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.udacity.friendlychat",
+            "certificate_hash": "95471de0a11650cd842a119bc112f801f08e913c"
+          }
+        },
+        {
           "client_id": "573260421268-vcr5dmaufdgt1u0ssh2o1i3gten38r8g.apps.googleusercontent.com",
           "client_type": 3
         }
