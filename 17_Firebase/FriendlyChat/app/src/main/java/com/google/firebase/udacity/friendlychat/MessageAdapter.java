@@ -45,4 +45,5 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
 
         return convertView;
     }
+
 }

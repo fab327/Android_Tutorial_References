@@ -270,12 +270,24 @@ public class MainActivity extends AppCompatActivity {
                     mMessageAdapter.add(friendlyMessage);
                 }
 
+                /*
+                 * This is a quick implementation logic for cloud functions testing because the adapter
+                 * and object model is not robust enough to provide us with a proper update mechanism.
+                 * Because my cloud function automatically modifies each newly inserted item we are
+                 * assuming here that the changed item is always the last inserted one.
+                 */
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+                    FriendlyMessage lastItem = mMessageAdapter.getItem(mMessageAdapter.getCount() - 1);
+                    mMessageAdapter.remove(lastItem);
+                    mMessageAdapter.add(friendlyMessage);
                 }
 
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+                    mMessageAdapter.remove(friendlyMessage);
                 }
 
                 @Override
