@@ -48,6 +48,12 @@ public class Part1 {
             }
         };
         myObservable.subscribe(myObserver);
+        /*
+        Output:
+            Subscription happened
+            Hello, World!
+            Completed
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //2
@@ -60,11 +66,20 @@ public class Part1 {
             }
         };
         myObservable_2.subscribe(onNextAction);
+        /*
+        Output:
+            Hello, World!
+            Hello, World!
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //3
         Observable.just(GREETING)
                 .subscribe(s -> System.out.println(s));
+        /*
+        Output:
+            Hello, World!
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //4
@@ -72,12 +87,20 @@ public class Part1 {
         //Therefore, the observer is one option for customized modifications (operators are the best choice)
         Observable.just(GREETING)
                 .subscribe(s -> System.out.println(s + " -Fab"));
+        /*
+        Output:
+            Hello, World! -Fab
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //5
         Observable.just(GREETING)
                 .map(s -> s + " -Fab")
                 .subscribe(s -> System.out.println(s));
+        /*
+        Output:
+            Hello, World! -Fab
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //6
@@ -86,6 +109,10 @@ public class Part1 {
                 .map(q -> q.hashCode())
                 .map(r -> Integer.toString(r))
                 .subscribe(s -> System.out.println(s));
+        /*
+        Output:
+            1428915397
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
     }

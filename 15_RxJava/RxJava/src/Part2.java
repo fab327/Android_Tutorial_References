@@ -22,6 +22,15 @@ public class Part2 {
                 System.out.println(url);
             }
         });
+        /*
+        Output:
+            Hello, World!
+            Test
+            Test2
+            Test3
+            Test4
+            Test5
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //2 -> bad because of nested subscriptions
@@ -29,12 +38,30 @@ public class Part2 {
             Observable.fromIterable(urls)
                     .subscribe(url -> System.out.println(url));
         });
+        /*
+        Output:
+            Hello, World!
+            Test
+            Test2
+            Test3
+            Test4
+            Test5
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //3
         getStrings(GREETING)
                 .flatMap(urls -> Observable.fromIterable(urls))
                 .subscribe(url -> System.out.println(url));
+        /*
+        Output:
+            Hello, World!
+            Test
+            Test2
+            Test3
+            Test4
+            Test5
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //4
@@ -43,6 +70,10 @@ public class Part2 {
                 .flatMap(url -> getTitle(url, false))
                 .subscribe(title -> System.out.println(title), error -> { /* do nothing yet */});
         //Notice how the error terminates the flow and won't print the third item in the array
+        /*
+        Output:
+            JustFabCodes
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
         //5
@@ -56,6 +87,19 @@ public class Part2 {
                 .take(5)
                 .doOnNext(s -> System.out.println("I can do additional work on '" + s + "' if was necessary"))
                 .subscribe(title -> System.out.println(title));
+        /*
+        Output:
+            I can do additional work on 'JustFabCodes' if was necessary
+            JustFabCodes
+            I can do additional work on 'JustFabCodes' if was necessary
+            JustFabCodes
+            I can do additional work on 'JustFabCodes' if was necessary
+            JustFabCodes
+            I can do additional work on 'JustFabCodes' if was necessary
+            JustFabCodes
+            I can do additional work on 'JustFabCodes' if was necessary
+            JustFabCodes
+         */
         System.out.println("------------------------------------------------------------------------------------------");
 
     }

@@ -29,6 +29,11 @@ public class Part3 {
                         System.out.println("Completed!");
                     }
                 });
+        /*
+        Output:
+            Hello, world!
+            Completed!
+         */
     }
 
     private static String potentialException(String s) {
