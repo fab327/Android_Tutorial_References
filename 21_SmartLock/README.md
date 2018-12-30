@@ -1,0 +1,3 @@
+## Tutorial on learning Smartlock [Codelab link](https://codelabs.developers.google.com/codelabs/android-smart-lock/index.html?index=../../index#0)
+
+### Note that because of the Autofill framework on Android Oreo and up, this tutorial is mostly deprecated...
