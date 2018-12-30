@@ -118,62 +118,9 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         super.onStop();
     }
 
-    /**
-     * Sets up the location request. Android has two location request settings:
-     * {@code ACCESS_COARSE_LOCATION} and {@code ACCESS_FINE_LOCATION}. These settings control
-     * the accuracy of the current location. This sample uses ACCESS_FINE_LOCATION, as defined in
-     * the AndroidManifest.xml.
-     * <p/>
-     * When the ACCESS_FINE_LOCATION setting is specified, combined with a fast update
-     * interval (5 seconds), the Fused Location Provider API returns location updates that are
-     * accurate to within a few feet.
-     * <p/>
-     * These settings are appropriate for mapping applications that show real-time location
-     * updates.
-     */
-    private void createLocationRequest() {
-        mLocationRequest = new LocationRequest();
-
-        mLocationRequest.setInterval(UPDATE_INTERVAL);
-        mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setMaxWaitTime(MAX_WAIT_TIME);
-    }
-
-    /**
-     * Builds {@link GoogleApiClient}, enabling automatic lifecycle management using
-     * {@link GoogleApiClient.Builder#enableAutoManage(android.support.v4.app.FragmentActivity,
-     * int, GoogleApiClient.OnConnectionFailedListener)}. I.e., GoogleApiClient connects in
-     * {@link AppCompatActivity#onStart}, or if onStart() has already happened, it connects
-     * immediately, and disconnects automatically in {@link AppCompatActivity#onStop}.
-     */
-    private void buildGoogleApiClient() {
-        if (mGoogleApiClient != null) {
-            return;
-        }
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(LocationServices.API)
-                .build();
-        createLocationRequest();
-    }
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         Log.i(TAG, "GoogleApiClient connected");
-    }
-
-    private PendingIntent getPendingIntent() {
-        //Pre O
-//        Intent intent = new Intent(this, LocationUpdatesIntentService.class);
-//        intent.setAction(LocationUpdatesIntentService.ACTION_PROCESS_UPDATES);
-//        return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        //O and above
-        Intent intent = new Intent(this, LocationUpdatesBroadcastReceiver.class);
-        intent.setAction(LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES);
-        return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
@@ -249,8 +196,8 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
             LocationServices.FusedLocationApi.requestLocationUpdates(
                     mGoogleApiClient, mLocationRequest, getPendingIntent());
         } catch (SecurityException e) {
-           LocationRequestHelper.setRequesting(this, false);
-           e.printStackTrace();
+            LocationRequestHelper.setRequesting(this, false);
+            e.printStackTrace();
         }
     }
 
@@ -262,6 +209,59 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.Co
         LocationRequestHelper.setRequesting(this, false);
         LocationServices.FusedLocationApi.removeLocationUpdates(
                 mGoogleApiClient, getPendingIntent());
+    }
+
+    /**
+     * Sets up the location request. Android has two location request settings:
+     * {@code ACCESS_COARSE_LOCATION} and {@code ACCESS_FINE_LOCATION}. These settings control
+     * the accuracy of the current location. This sample uses ACCESS_FINE_LOCATION, as defined in
+     * the AndroidManifest.xml.
+     * <p/>
+     * When the ACCESS_FINE_LOCATION setting is specified, combined with a fast update
+     * interval (5 seconds), the Fused Location Provider API returns location updates that are
+     * accurate to within a few feet.
+     * <p/>
+     * These settings are appropriate for mapping applications that show real-time location
+     * updates.
+     */
+    private void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setMaxWaitTime(MAX_WAIT_TIME);
+    }
+
+    /**
+     * Builds {@link GoogleApiClient}, enabling automatic lifecycle management using
+     * {@link GoogleApiClient.Builder#enableAutoManage(android.support.v4.app.FragmentActivity,
+     * int, GoogleApiClient.OnConnectionFailedListener)}. I.e., GoogleApiClient connects in
+     * {@link AppCompatActivity#onStart}, or if onStart() has already happened, it connects
+     * immediately, and disconnects automatically in {@link AppCompatActivity#onStop}.
+     */
+    private void buildGoogleApiClient() {
+        if (mGoogleApiClient != null) {
+            return;
+        }
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .enableAutoManage(this, this)
+                .addApi(LocationServices.API)
+                .build();
+        createLocationRequest();
+    }
+
+    private PendingIntent getPendingIntent() {
+        //Pre O
+//        Intent intent = new Intent(this, LocationUpdatesIntentService.class);
+//        intent.setAction(LocationUpdatesIntentService.ACTION_PROCESS_UPDATES);
+//        return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //O and above
+        Intent intent = new Intent(this, LocationUpdatesBroadcastReceiver.class);
+        intent.setAction(LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES);
+        return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     /**
