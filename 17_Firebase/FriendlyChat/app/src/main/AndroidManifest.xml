@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Firebase performance monitoring through logcat : 'FirebasePerformance ' -->
+        <!-- Firebase performance monitoring through logcat : 'FirebasePerformance:' -->
         <meta-data
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
