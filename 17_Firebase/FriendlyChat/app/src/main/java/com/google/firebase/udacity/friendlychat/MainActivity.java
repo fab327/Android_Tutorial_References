@@ -43,6 +43,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.AddTrace;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.storage.FirebaseStorage;
@@ -145,11 +148,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Send button sends a message and clears the EditText
         mSendButton.setOnClickListener(view -> {
+            //Firebase monitoring
+            Trace myTrace = FirebasePerformance.getInstance().newTrace("Push_New_Message_Trace");
+            myTrace.start();
+
             FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null);
             messagesDatabaseReference.push().setValue(friendlyMessage);
 
             // Clear input box
             mMessageEditText.setText("");
+
+            myTrace.stop();
         });
 
 
@@ -309,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Firebase Performance monitoring
+    @AddTrace(name = "fetchConfig", enabled = true /* optional */)
     private void fetchConfig() {
         long cacheExpiration = TimeUnit.HOURS.toSeconds(1);
 

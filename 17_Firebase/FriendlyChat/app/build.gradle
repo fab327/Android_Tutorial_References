@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 repositories {
     flatDir {
@@ -53,6 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-config:16.1.2'
 
     implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
+    implementation 'com.google.firebase:firebase-perf:16.2.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
