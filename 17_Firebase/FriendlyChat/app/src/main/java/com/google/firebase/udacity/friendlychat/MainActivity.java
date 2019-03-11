@@ -36,6 +36,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.appindexing.FirebaseAppIndex;
+import com.google.firebase.appindexing.Indexable;
+import com.google.firebase.appindexing.builders.Indexables;
+import com.google.firebase.appindexing.builders.PersonBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -60,13 +64,13 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
     public static final String ANONYMOUS = "anonymous";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
     public static final int RC_SIGN_IN = 1;
     public static final int RC_PHOTO_PICKER = 2;
+    public static final String MESSAGE_URL = "http://friendlychat.firebase.google.com/message/";
 
+    private static final String TAG = "MainActivity";
     private static final String FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length";
 
     private ListView mMessageListView;
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     private StorageReference chatPhotoStorageReference;
     private ChildEventListener childEventListener;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private FirebaseRemoteConfig firebaseRemoteConfig;
 
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         // ImagePickerButton shows an image picker to upload a image for a message
         mPhotoPickerButton.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/jpeg");
+            intent.setType("image/*");
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
             startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
         });
@@ -163,10 +168,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         firebaseAuthListener = firebaseAuth -> {
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            if (user != null) {
+            firebaseUser = firebaseAuth.getCurrentUser();
+            if (firebaseUser != null) {
                 //user is signed in
-                onSignedInInitialized(user.getDisplayName());
+                onSignedInInitialized(firebaseUser);
             } else {
                 //user is signed out
                 onSignedOutCleanup();
@@ -259,8 +264,8 @@ public class MainActivity extends AppCompatActivity {
         mMessageAdapter.clear();
     }
 
-    private void onSignedInInitialized(String displayName) {
-        mUsername = displayName;
+    private void onSignedInInitialized(FirebaseUser firebaseUser) {
+        mUsername = firebaseUser.getDisplayName();
         attachDatabaseReadListener();
     }
 
@@ -276,7 +281,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+                    friendlyMessage.setId(dataSnapshot.getKey());
                     mMessageAdapter.add(friendlyMessage);
+
+                    //write this message to the on-device index - should be in adapter#onBind()
+                    if (friendlyMessage.getText() != null) {
+                        FirebaseAppIndex.getInstance().update(getMessageIndexable(friendlyMessage));
+                    }
                 }
 
                 /*
@@ -289,8 +300,14 @@ public class MainActivity extends AppCompatActivity {
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     FriendlyMessage lastItem = mMessageAdapter.getItem(mMessageAdapter.getCount() - 1);
+                    friendlyMessage.setId(dataSnapshot.getKey());
                     mMessageAdapter.remove(lastItem);
                     mMessageAdapter.add(friendlyMessage);
+
+                    //write this message to the on-device index - should be in adapter#onBind()
+                    if (friendlyMessage.getText() != null) {
+                        FirebaseAppIndex.getInstance().update(getMessageIndexable(friendlyMessage));
+                    }
                 }
 
                 @Override
@@ -345,5 +362,27 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, FRIENDLY_MSG_LENGTH_KEY + " = " + friendly_msg_length);
     }
 
+    /**
+     * App indexing
+     */
+    private Indexable getMessageIndexable(FriendlyMessage friendlyMessage) {
+        PersonBuilder sender = Indexables.personBuilder()
+                .setIsSelf(mUsername.equals(friendlyMessage.getName()))
+                .setName(friendlyMessage.getName())
+                .setUrl(MESSAGE_URL.concat(friendlyMessage.getId() + "/sender"));
+
+        PersonBuilder recipient = Indexables.personBuilder()
+                .setName(mUsername)
+                .setUrl(MESSAGE_URL.concat(friendlyMessage.getId() + "/recipient"));
+
+        Indexable messageToIndex = Indexables.messageBuilder()
+                .setName(friendlyMessage.getText())
+                .setUrl(MESSAGE_URL.concat(friendlyMessage.getId()))
+                .setSender(sender)
+                .setRecipient(recipient)
+                .build();
+
+        return messageToIndex;
+    }
 
 }
