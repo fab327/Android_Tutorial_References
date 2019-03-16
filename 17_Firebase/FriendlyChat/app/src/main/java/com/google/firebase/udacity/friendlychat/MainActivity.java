@@ -54,6 +54,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.perf.FirebasePerformance;
 import com.google.firebase.perf.metrics.AddTrace;
 import com.google.firebase.perf.metrics.Trace;
@@ -61,6 +62,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.udacity.friendlychat.background.MyFirebaseMessagingService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -183,7 +185,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             myTrace.stop();
         });
 
-
         firebaseAuthListener = firebaseAuth -> {
             firebaseUser = firebaseAuth.getCurrentUser();
             if (firebaseUser != null) {
@@ -214,6 +215,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         defaultConfigMap.put(FRIENDLY_MSG_LENGTH_KEY, DEFAULT_MSG_LENGTH_LIMIT);
         firebaseRemoteConfig.setDefaults(defaultConfigMap);
         fetchConfig();
+
+        //Grab the fcm registration token
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener( task -> {
+            if (task.isSuccessful()) { //use .addOnSuccessListener instead to avoid this step
+                Log.d(MyFirebaseMessagingService.TAG, "Registration token: " + task.getResult().getToken());
+            }
+        });
 
         //Adview for AdMob
         MobileAds.initialize(this, "ca-app-pub-0317582446344863~3319582460");

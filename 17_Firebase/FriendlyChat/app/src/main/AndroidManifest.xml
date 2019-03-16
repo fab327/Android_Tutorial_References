@@ -17,7 +17,7 @@
         <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-0317582446344863~3319582460"/>
+            android:value="ca-app-pub-0317582446344863~3319582460" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -40,7 +40,11 @@
         <service
             android:name=".background.MyFirebaseMessagingService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 
