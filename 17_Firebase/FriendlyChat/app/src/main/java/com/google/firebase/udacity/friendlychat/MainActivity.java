@@ -36,6 +36,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.appindexing.FirebaseAppIndex;
 import com.google.firebase.appindexing.Indexable;
 import com.google.firebase.appindexing.builders.Indexables;
@@ -62,12 +69,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     public static final String ANONYMOUS = "anonymous";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
     public static final int RC_SIGN_IN = 1;
     public static final int RC_PHOTO_PICKER = 2;
+    public static final int RC_REQUEST_INVITE = 3;
     public static final String MESSAGE_URL = "http://friendlychat.firebase.google.com/message/";
 
     private static final String TAG = "MainActivity";
@@ -79,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
     private Button mSendButton;
+    private AdView mAdView;
 
     private String mUsername;
 
@@ -92,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private FirebaseRemoteConfig firebaseRemoteConfig;
 
+    private GoogleApiClient googleApiClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API)
+                .build();
 
         messagesDatabaseReference = firebaseDatabase.getReference().child("messages");
         chatPhotoStorageReference = firebaseStorage.getReference().child("chat_photos");
@@ -113,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         mPhotoPickerButton = findViewById(R.id.photoPickerButton);
         mMessageEditText = findViewById(R.id.messageEditText);
         mSendButton = findViewById(R.id.sendButton);
+        mAdView = findViewById(R.id.adView);
 
         // Initialize message ListView and its adapter
         List<FriendlyMessage> friendlyMessages = new ArrayList<>();
@@ -197,6 +214,11 @@ public class MainActivity extends AppCompatActivity {
         defaultConfigMap.put(FRIENDLY_MSG_LENGTH_KEY, DEFAULT_MSG_LENGTH_LIMIT);
         firebaseRemoteConfig.setDefaults(defaultConfigMap);
         fetchConfig();
+
+        //Adview for AdMob
+        MobileAds.initialize(this, "ca-app-pub-0317582446344863~3319582460");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -222,6 +244,13 @@ public class MainActivity extends AppCompatActivity {
                             messagesDatabaseReference.push().setValue(friendlyMessage);
                         });
                     });
+        } else if (requestCode == RC_REQUEST_INVITE) {
+            if (resultCode == RESULT_OK) {
+                String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
+                Log.d(TAG, "Invitations sent: " + ids.length);
+            } else {
+                Log.d(TAG, "Failed to send invitation.");
+            }
         }
     }
 
@@ -242,6 +271,12 @@ public class MainActivity extends AppCompatActivity {
                             //
                         });
                 break;
+            case R.id.fetch_config:
+                fetchConfig();
+                break;
+            case R.id.invite_menu:
+                sendInvitation();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -251,17 +286,38 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
+        if (mAdView != null) {
+            mAdView.resume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
+        if (mAdView != null) {
+            mAdView.pause();
+        }
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
         detachDatabaseReadListener();
         mMessageAdapter.clear();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed:" + connectionResult);
+        Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
 
     private void onSignedInInitialized(FirebaseUser firebaseUser) {
@@ -383,6 +439,17 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         return messageToIndex;
+    }
+
+    /**
+     * App invite
+     */
+    private void sendInvitation() {
+        Intent intent = new AppInviteInvitation.IntentBuilder("Friendly Chat")
+                .setMessage("Friendly Chat Invite")
+                .setCallToActionText("Friendly_Chat")
+                .build();
+        startActivityForResult(intent, RC_REQUEST_INVITE);
     }
 
 }

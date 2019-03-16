@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Friendly Chat</string>
     <string name="sign_out">Sign Out</string>
+    <string name="invite_menu">Invite</string>
+    <string name="config_menu">Remote Config</string>
     <string name="send_button_label">Send</string>
 </resources>

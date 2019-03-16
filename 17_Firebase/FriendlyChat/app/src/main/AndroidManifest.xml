@@ -14,7 +14,12 @@
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
 
-        <activity android:name="com.google.firebase.udacity.friendlychat.MainActivity">
+        <!-- AdMob -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-0317582446344863~3319582460"/>
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,6 +36,11 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".background.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="false" />
 
     </application>
 
