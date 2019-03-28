@@ -51,27 +51,65 @@ exports.addWelcomeMessages = functions.auth.user().onCreate(async (user) => {
     console.log('Welcome message written to database');
 });
 
-exports.blurOffensiveImages = functions.runWith({memory: '2GB'}).storage.bucket('chat_photos').object().onFinalize(
-    async (object) => {
-        const image = {
-            source: {imageUri: `gs://${object.bucket}/${object.name}`},
-        };
-        const vision = new Vision.ImageAnnotatorClient();
+// exports.blurOffensiveImages = functions.runWith({memory: '2GB'}).storage.object().onFinalize(
+//     async (object) => {
+//         if (object.name.startsWith('chat_photos/')) {
+//             console.log(`Object: ${object}`);
+//             console.log(`Object name: ${object.name}`);
 
-        // Check the image content using the Cloud Vision API.
-        const batchAnnotateImagesResponse = await vision.safeSearchDetection(image);
-        console.log('batchAnnotateImagesResponse succeeded');
-        const safeSearchResult = batchAnnotateImagesResponse[0].safeSearchAnnotation;
-        console.log('safeSearchResult succeeded');
-        const Likelihood = Vision.types.Likelihood;
-        if (Likelihood[safeSearchResult.adult] >= Likelihood.LIKELY
-            || Likelihood[safeSearchResult.violence] >= Likelihood.LIKELY) {
-                console.log('The image', object.name, 'has been detected as inapp')
-                return blurImage(object.name);
-        }
-        console.log('The image', object.name, 'has been detected as OK.')
+//             const image = {
+//                 source: {imageUri: `gs://${object.bucket}/${object.name}`},
+//             };
+//             const vision = new Vision.ImageAnnotatorClient();
+    
+//             // Check the image content using the Cloud Vision API.
+//             const batchAnnotateImagesResponse = await vision.safeSearchDetection(image);
+//             console.log('batchAnnotateImagesResponse succeeded');
+//             const safeSearchResult = batchAnnotateImagesResponse[0].safeSearchAnnotation;
+//             console.log('safeSearchResult succeeded');
+//             const Likelihood = Vision.types.Likelihood;
+//             if (Likelihood[safeSearchResult.adult] >= Likelihood.LIKELY
+//                 || Likelihood[safeSearchResult.violence] >= Likelihood.LIKELY) {
+//                     console.log('The image', object.name, 'has been detected as inapp')
+//                     return blurImage(object.name);
+//             }
+//             console.log('The image', object.name, 'has been detected as OK.');
+//         }
+//     }
+// )
+
+exports.blurOffensiveImages = functions.storage.object().onFinalize(event => {
+    const object = event.data;
+    
+    // Exit if this is a deletion or a deploy event.
+    if (object.resourceState === 'not_exists') {
+        return console.log('This is a deletion event.');
+    } else if (!object.name) {
+        return console.log('This is a deploy event.');
     }
-)
+  
+    // Check the image content using the Cloud Vision API.
+    return vision.safeSearchDetection(`gs://${object.bucket}/${object.name}`).then(batchAnnotateImagesResponse => {
+            console.log("batchAnnotateImagesResponse");
+            console.log(batchAnnotateImagesResponse);
+            console.log("batchAnnotateImagesResponse[0]");
+            console.log(batchAnnotateImagesResponse[0]);
+            const safeSearchResult = batchAnnotateImagesResponse[0].safeSearchAnnotation;
+            console.log("safeSearchResult.adult");
+            console.log(safeSearchResult.adult);
+            //const Likelihood = Vision.types.Likelihood;
+            if (Likelihood[safeSearchResult.adult] >= Likelihood.LIKELY ||
+                Likelihood[safeSearchResult.violence] >= Likelihood.LIKELY) {
+                console.log('The image', object.name, 'has been detected as inappropriate.');
+                return blurImage(object.name, object.bucket);
+            } else {
+                console.log('The image', object.name,'has been detected as OK.');
+            }
+        })
+        .catch(err => {
+            console.log('Search Detecion failed.', err);
+        });
+});
 
 // Returns text with keywords replaced by emoji
 // Replacing with the regular expression /.../ig does a case-insensitive
