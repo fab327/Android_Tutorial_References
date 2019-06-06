@@ -1,3 +1,2 @@
-# MDC-102 for Material Components for Android (Kotlin)
+# Tutorial on Material Design 2.0 [Codelab's link](https://codelabs.developers.google.com/codelabs/mdc-101-kotlin/index.html?index=..%2F..%2Findex#0)
 
-Contains starter code structure for the MDC-102 Kotlin codelab.
