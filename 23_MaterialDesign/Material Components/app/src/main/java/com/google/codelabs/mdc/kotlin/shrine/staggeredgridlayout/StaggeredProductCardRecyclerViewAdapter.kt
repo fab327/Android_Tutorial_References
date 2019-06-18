@@ -1,8 +1,11 @@
 package com.google.codelabs.mdc.kotlin.shrine.staggeredgridlayout
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.NetworkImageView
 import com.google.codelabs.mdc.kotlin.shrine.R
 import com.google.codelabs.mdc.kotlin.shrine.network.ImageRequester
 import com.google.codelabs.mdc.kotlin.shrine.network.ProductEntry
@@ -41,4 +44,11 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
     override fun getItemCount(): Int {
         return productList?.size ?: 0
     }
+}
+
+class StaggeredProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    var productImage: NetworkImageView = itemView.findViewById(R.id.product_image)
+    var productTitle: TextView = itemView.findViewById(R.id.product_title)
+    var productPrice: TextView = itemView.findViewById(R.id.product_price)
 }

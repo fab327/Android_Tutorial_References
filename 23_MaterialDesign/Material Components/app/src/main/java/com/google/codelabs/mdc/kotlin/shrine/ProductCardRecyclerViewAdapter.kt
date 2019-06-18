@@ -1,8 +1,12 @@
 package com.google.codelabs.mdc.kotlin.shrine
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.NetworkImageView
+import com.google.codelabs.mdc.kotlin.shrine.network.ImageRequester
 import com.google.codelabs.mdc.kotlin.shrine.network.ProductEntry
 
 /**
@@ -16,10 +20,19 @@ class ProductCardRecyclerViewAdapter(private val productList: List<ProductEntry>
     }
 
     override fun onBindViewHolder(holder: ProductCardViewHolder, position: Int) {
-        // TODO: Put ViewHolder binding code here in MDC-102
+        val productEntry = productList[position]
+        holder.productTitle.text = productEntry.title
+        holder.productPrice.text = productEntry.price
+        ImageRequester.setImageFromUrl(holder.productImage, productEntry.url)
     }
 
     override fun getItemCount(): Int {
         return productList.size
     }
+}
+
+class ProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var productImage: NetworkImageView = itemView.findViewById(R.id.product_image)
+    var productTitle: TextView = itemView.findViewById(R.id.product_title)
+    var productPrice: TextView = itemView.findViewById(R.id.product_price)
 }
