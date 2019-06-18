@@ -18,11 +18,11 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaggeredProductCardViewHolder {
-        var layoutId = R.layout.shr_staggered_product_card_first
+        var layoutId = R.layout.staggered_product_card_first
         if (viewType == 1) {
-            layoutId = R.layout.shr_staggered_product_card_second
+            layoutId = R.layout.staggered_product_card_second
         } else if (viewType == 2) {
-            layoutId = R.layout.shr_staggered_product_card_third
+            layoutId = R.layout.staggered_product_card_third
         }
 
         val layoutView = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)

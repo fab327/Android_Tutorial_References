@@ -11,7 +11,7 @@ import com.google.codelabs.mdc.kotlin.shrine.network.ProductEntry
 class ProductCardRecyclerViewAdapter(private val productList: List<ProductEntry>) : RecyclerView.Adapter<ProductCardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductCardViewHolder {
-        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.shr_product_card, parent, false)
+        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.product_card, parent, false)
         return ProductCardViewHolder(layoutView)
     }
 

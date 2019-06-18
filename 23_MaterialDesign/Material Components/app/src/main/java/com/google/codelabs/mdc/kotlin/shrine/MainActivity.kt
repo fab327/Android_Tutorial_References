@@ -7,7 +7,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.shr_main_activity)
+        setContentView(R.layout.main_activity)
 
         if (savedInstanceState == null) {
             supportFragmentManager

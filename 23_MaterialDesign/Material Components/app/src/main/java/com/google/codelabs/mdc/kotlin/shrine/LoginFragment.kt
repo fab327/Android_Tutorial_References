@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.shr_login_fragment.*
-import kotlinx.android.synthetic.main.shr_login_fragment.view.*
+import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.login_fragment.view.*
 
 /**
  * Fragment representing the login screen for Shrine.
@@ -18,7 +18,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.shr_login_fragment, container, false)
+        val view = inflater.inflate(R.layout.login_fragment, container, false)
 
         // Set an error if the password is less than 8 characters.
         view.next_button.setOnClickListener {
