@@ -10,3 +10,6 @@ CardView -> [ProductCard.xml](/23_MaterialDesign/Material%20Components/app/src/m
 RecyclerView adapter & viewHolder -> [ProductCardRecyclerViewAdapter.kt](/23_MaterialDesign/Material%20Components/app/src/main/java/com/google/codelabs/mdc/kotlin/shrine/ProductCardRecyclerViewAdapter.kt)
 
 Binding elements to the UI -> [ProductGridFragment.kt](/23_MaterialDesign/Material%20Components/app/src/main/java/com/google/codelabs/mdc/kotlin/shrine/ProductGridFragment.kt) & [product_grid_fragment.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/layout/product_grid_fragment.xml)
+
+
+Style -> [styles.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/values/styles.xml)
