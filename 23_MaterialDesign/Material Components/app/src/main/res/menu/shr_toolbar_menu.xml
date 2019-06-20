@@ -11,4 +11,9 @@
         android:icon="@drawable/shr_filter"
         android:title="@string/shr_filter_title"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/layout_switch"
+        android:icon="@drawable/ic_switch"
+        android:title="@string/shr_switch"
+        app:showAsAction="always"/>
 </menu>

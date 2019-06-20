@@ -13,3 +13,6 @@ Binding elements to the UI -> [ProductGridFragment.kt](/23_MaterialDesign/Materi
 
 
 Style -> [styles.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/values/styles.xml)
+
+
+2 mode layout -> [ProductGridFragment.xml#setUpRecyclerLayout()](/23_MaterialDesign/Material%20Components/app/src/main/res/layout/product_grid_fragment.xml)

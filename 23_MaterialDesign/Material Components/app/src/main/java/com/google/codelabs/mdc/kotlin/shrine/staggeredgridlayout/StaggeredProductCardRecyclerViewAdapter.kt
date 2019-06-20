@@ -47,7 +47,6 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
 }
 
 class StaggeredProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     var productImage: NetworkImageView = itemView.findViewById(R.id.product_image)
     var productTitle: TextView = itemView.findViewById(R.id.product_title)
     var productPrice: TextView = itemView.findViewById(R.id.product_price)

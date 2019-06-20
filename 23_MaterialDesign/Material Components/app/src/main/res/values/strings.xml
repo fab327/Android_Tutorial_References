@@ -7,6 +7,7 @@
     <string name="shr_error_password">Password must contain at least 8 characters.</string>
     <string name="shr_filter_title">Filter</string>
     <string name="shr_search_title">Search</string>
+    <string name="shr_switch">Switch</string>
     <string name="shr_product_title">Title</string>
     <string name="shr_product_description">Secondary text</string>
 
