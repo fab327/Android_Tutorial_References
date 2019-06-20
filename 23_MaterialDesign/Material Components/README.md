@@ -16,3 +16,6 @@ Style -> [styles.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/
 
 
 2 mode layout -> [ProductGridFragment.xml#setUpRecyclerLayout()](/23_MaterialDesign/Material%20Components/app/src/main/res/layout/product_grid_fragment.xml)
+
+
+Backdrop menu -> [shr_backdrop.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/layout/shr_backdrop.xml)

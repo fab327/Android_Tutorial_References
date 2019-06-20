@@ -16,6 +16,8 @@ class ProductGridFragment : Fragment() {
     var layoutSwitchCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Set a different theme
+        // activity?.setTheme(R.style.Theme_Shrine_Autumn)
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -64,7 +66,6 @@ class ProductGridFragment : Fragment() {
                     }
                 }
             }
-            recycler_view_container?.setPadding(0, 0, 0, 0)
         }
 
         if (layoutSwitchCount == 0) {
