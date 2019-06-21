@@ -28,7 +28,7 @@ class NavigationIconClickListener @JvmOverloads internal constructor(
         height = displayMetrics.heightPixels
     }
 
-    override fun onClick(view: View) {
+    override fun onClick(view: View?) {
         backdropShown = !backdropShown
 
         // Cancel the existing animations
@@ -49,8 +49,8 @@ class NavigationIconClickListener @JvmOverloads internal constructor(
         animator.start()
     }
 
-    private fun updateIcon(view: View) {
-        if (openIcon != null && closeIcon != null) {
+    private fun updateIcon(view: View?) {
+        if (view != null && openIcon != null && closeIcon != null) {
             if (view !is ImageView) {
                 throw IllegalArgumentException("updateIcon() must be called on an ImageView") as Throwable
             }

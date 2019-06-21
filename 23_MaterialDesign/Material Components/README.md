@@ -19,3 +19,5 @@ Style -> [styles.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/
 
 
 Backdrop menu -> [shr_backdrop.xml](/23_MaterialDesign/Material%20Components/app/src/main/res/layout/shr_backdrop.xml)
+
+Menu reveal listener -> [NavigationIconClickListener.kt](/23_MaterialDesign/Material%20Components/app/src/main/java/com/google/codelabs/mdc/kotlin/shrine/NavigationIconClickListener.kt)
