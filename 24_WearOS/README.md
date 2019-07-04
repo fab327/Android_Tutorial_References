@@ -11,4 +11,4 @@ Watch logic -> [MealActivity.kt](/24_WearOS/wear/src/main/java/com/raywenderlich
 
 Watch layout -> [activity_meal.xml](/24_WearOS/wear/src/main/res/layout/activity_meal.xml)
 
-Java shared library -> [Meal.kt](/24_WearOS/shared/src/main/java/com/justfabcodes/shared/Meal.kt)
+Java shared library folder -> [Meal.kt](/24_WearOS/shared/src/main/java/com/justfabcodes/shared/Meal.kt)
