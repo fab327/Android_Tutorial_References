@@ -3,12 +3,13 @@ package com.raywenderlich.markme.splash.view.ui
 import android.support.v7.app.AppCompatActivity
 import com.raywenderlich.markme.main.view.ui.MainActivity
 import com.raywenderlich.markme.splash.SplashContract
-import com.raywenderlich.markme.splash.presenter.SplashPresenter
 import org.jetbrains.anko.startActivity
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class SplashActivity : AppCompatActivity(), SplashContract.View {
 
-    private val splashPresenter : SplashContract.Presenter by lazy { SplashPresenter(this) }
+    private val splashPresenter : SplashContract.Presenter by inject { parametersOf(this) }
 
     override fun onResume() {
         super.onResume()

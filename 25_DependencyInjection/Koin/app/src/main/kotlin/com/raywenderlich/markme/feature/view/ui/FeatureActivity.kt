@@ -14,7 +14,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.raywenderlich.markme.R
 import com.raywenderlich.markme.feature.FeatureContract
-import com.raywenderlich.markme.feature.presenter.FeaturePresenter
 import com.raywenderlich.markme.feature.view.adapter.FeatureAttendanceAdapter
 import com.raywenderlich.markme.feature.view.adapter.FeatureGradingAdapter
 import com.raywenderlich.markme.feature.view.adapter.RwAdapter
@@ -23,6 +22,9 @@ import com.raywenderlich.markme.model.Student
 import com.raywenderlich.markme.model.studentList
 import com.raywenderlich.markme.utils.ClassSection
 import kotlinx.android.synthetic.main.activity_feature.*
+import org.jetbrains.anko.toast
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class FeatureActivity : AppCompatActivity(), FeatureContract.View<Student> {
 
@@ -30,7 +32,7 @@ class FeatureActivity : AppCompatActivity(), FeatureContract.View<Student> {
     private val rvItems: RecyclerView? by lazy { activity_feature__rv__list }
     private val btnSave: Button? by lazy { activity_feature__btn__save }
     private val classList = studentList.map { Student(uid = null, name = it, attendance = false, grade = -1) }
-    private val featurePresenter: FeatureContract.Presenter<Student> by lazy { FeaturePresenter(this) }
+    private val featurePresenter: FeatureContract.Presenter<Student> by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,7 @@ class FeatureActivity : AppCompatActivity(), FeatureContract.View<Student> {
             setupSaveButton(feature)
             setupRecyclerView(feature)
             // Load persisted data if any
-
+            featurePresenter.loadPersistedData(classList, feature)
         }
     }
 
@@ -65,11 +67,11 @@ class FeatureActivity : AppCompatActivity(), FeatureContract.View<Student> {
     }
 
     override fun showToastMessage(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        toast(msg)
     }
 
     override fun onPersistedDataLoaded(data: List<Student>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (rvItems?.adapter as? RwAdapter<Student>)?.updateData(data)
     }
 
     private fun setupSaveButton(feature: ClassSection) {

@@ -40,4 +40,11 @@ class FeatureGradingAdapter(val dataList: List<Student>?)
     }
 
     override fun getData(): List<Student>? = dataList
+
+    override fun updateData(data: List<Student>) {
+        data.forEachIndexed { index, student ->
+            dataList?.first { student.name == it.name }?.grade = student.grade
+            notifyItemChanged(index)
+        }
+    }
 }
