@@ -3,6 +3,8 @@ package com.justfabcodes.cheesefinder
 
 import android.text.Editable
 import android.text.TextWatcher
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,11 +25,14 @@ class CheeseActivity : BaseSearchActivity() {
         super.onStart()
 
         val buttonClickStream = createButtonClickObservable()
+                .toFlowable(BackpressureStrategy.LATEST)    // Keeps only the latest item emitted by onNext overwriting the previous value
         val textChangeStream = createTextChangeObservable()
-        val searchTextObservable = Observable.merge(buttonClickStream, textChangeStream)
+                .toFlowable(BackpressureStrategy.BUFFER)
+//        val searchTextObservable = Observable.merge(buttonClickStream, textChangeStream)
+        val searchTextFlowable = Flowable.merge(buttonClickStream, textChangeStream)
 
 //        subscriptions.add()
-        disposable = searchTextObservable
+        disposable = searchTextFlowable
                 .observeOn(AndroidSchedulers.mainThread())      // specify which thread to start with
                 .doOnNext { showProgress() }                    //
                 .observeOn(Schedulers.io())                     // specify which thread the next operator should be called on
