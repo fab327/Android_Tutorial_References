@@ -1,6 +1,14 @@
 package com.android.raywenderlich.remindmethere
 
+import android.Manifest
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.support.v4.content.ContextCompat
+import com.google.android.gms.location.Geofence
+import com.google.android.gms.location.GeofencingRequest
+import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 
 class ReminderRepository(private val context: Context) {
@@ -12,22 +20,48 @@ class ReminderRepository(private val context: Context) {
 
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     private val gson = Gson()
-
+    private val geofencingClient = LocationServices.getGeofencingClient(context)
+    private val geofencePendingIntent: PendingIntent by lazy {
+        val intent = Intent(context, GeofenceTransitionsIntentService::class.java)
+        PendingIntent.getService(
+                context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        )
+    }
 
     fun add(reminder: Reminder,
             success: () -> Unit,
             failure: (error: String) -> Unit) {
-        val list = getAll() + reminder
-        saveAll(list)
-        success()
+
+        val geofence = buildGeofence(reminder)
+        if (geofence != null
+                && ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            geofencingClient
+                    .addGeofences(buildGeofencingRequest(geofence), geofencePendingIntent)
+                    .addOnSuccessListener {
+                        saveAll(getAll() + reminder)
+                        success()
+                    }
+                    .addOnFailureListener {
+                        failure(GeofenceErrorMessages.getErrorString(context, it))
+                    }
+        }
     }
 
     fun remove(reminder: Reminder,
                success: () -> Unit,
                failure: (error: String) -> Unit) {
-        val list = getAll() - reminder
-        saveAll(list)
-        success()
+        geofencingClient
+                .removeGeofences(listOf(reminder.id))
+                .addOnSuccessListener {
+                    saveAll(getAll() - reminder)
+                    success()
+                }
+                .addOnFailureListener {
+                    failure(GeofenceErrorMessages.getErrorString(context, it))
+                }
     }
 
     private fun saveAll(list: List<Reminder>) {
@@ -52,4 +86,34 @@ class ReminderRepository(private val context: Context) {
     fun get(requestId: String?) = getAll().firstOrNull { it.id == requestId }
 
     fun getLast() = getAll().lastOrNull()
+
+    private fun buildGeofence(reminder: Reminder): Geofence? {
+        val latitude = reminder.latLng?.latitude
+        val longitude = reminder.latLng?.longitude
+        val radius = reminder.radius
+
+        if (latitude != null && longitude != null && radius != null) {
+            return Geofence.Builder()
+                    .setRequestId(reminder.id)
+                    .setCircularRegion(
+                            latitude,
+                            longitude,
+                            radius.toFloat()
+                    )
+//                    .setNotificationResponsiveness() -> decides how often to check if device entering/exiting a geofence
+//                    .setLoiteringDelay() -> decides how long to wait after entering the geofence before triggering the geofence
+                    .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
+                    .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                    .build()
+        }
+
+        return null
+    }
+
+    private fun buildGeofencingRequest(geofence: Geofence): GeofencingRequest {
+        return GeofencingRequest.Builder()
+                .setInitialTrigger(0) //Don't trigger if already in the zone at initialization time
+                .addGeofences(listOf(geofence))
+                .build()
+    }
 }
