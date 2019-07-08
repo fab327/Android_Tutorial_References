@@ -6,4 +6,4 @@ Handling the system notification when geofence is triggered -> [GeofenceTransiti
 
 Drawing a region circle on map -> [Utils.kt#showReminderInMap](/3_Geofencing\app\src\main\java\com\android\raywenderlich\remindmethere\Utils.kt)
 
-[Implementation commit]()
+[Implementation commit](https://github.com/fab327/Android_Tutorial_References/commit/11f5839c85953f5240471d87596de799d10c3f86)
