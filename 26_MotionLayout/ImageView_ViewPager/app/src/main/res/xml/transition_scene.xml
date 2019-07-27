@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start">
+
+        <!-- Animate view based on swipe action -->
+        <OnSwipe
+            app:touchAnchorId="@id/happyAndroid"
+            app:touchAnchorSide="top" />
+
+        <!-- Move the object along a path -->
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="20"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/happyAndroid"
+                app:percentX="0.2"
+                app:percentY="0.3" />
+
+            <KeyPosition
+                app:framePosition="50"
+                app:keyPositionType="parentRelative"
+                app:motionTarget="@id/happyAndroid"
+                app:percentX="0.8"
+                app:percentY="0.7" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/happyAndroid"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/happyAndroid"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+</MotionScene>

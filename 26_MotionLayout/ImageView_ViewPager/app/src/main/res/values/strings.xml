@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">RWAndroidTutorial</string>
+  <string name="previous">Previous</string>
+  <string name="finish">Finish</string>
+  <string name="finish_button">Finish</string>
+  <string name="next">Next</string>
+  <string name="onboarding_finished">Onboarding finished!</string>
+  <string name="android_title">Android - The best platform ever! </string>
+  <string name="android_description">This is only one of the awesome tutorials in the even more awesome series of Android tutorials. Learn about animations, frameworks, networking, and everything which Android does better than other platforms.</string>
+  <string name="ios_title">iOS - We had to include this as well…</string>
+  <string name="ios_description">One can argue that iOS is better than Android, but one would be wrong. Either way, we have iOS tutorials as well, but why would you read them over the Android ones? :]</string>
+  <string name="unity_title">Unity - Games galore</string>
+  <string name="unity_description">Unity really is fun. If you\'re looking to create some games, when you\'re not playing them, we have everything you need!</string>
+  <string name="kotlin_title">Kotlin - The beautiful thing</string>
+  <string name="kotlin_description">We all know Kotlin is just the best. Some might say that it\'s what programming languages should be. And they would be 100% korrect.</string>
+  <string name="swift_title">Swift - The not so good Kotlin</string>
+  <string name="swift_description">Swift is cool too. But not as cool as Kotlin, right? It\'s pretty similar to our beautiful, one of a kind, language, so you can learn it here as well.</string>
+</resources>

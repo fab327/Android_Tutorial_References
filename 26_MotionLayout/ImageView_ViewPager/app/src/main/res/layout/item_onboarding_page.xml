@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/onboardingPageRoot"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/platformLogo"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:layout_constraintBottom_toTopOf="@id/pageTitle"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/pageTitle"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/large_margin"
+    android:textSize="@dimen/title_text_size"
+    app:layout_constraintBottom_toTopOf="@id/pageDescription"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_chainStyle="packed" />
+
+  <TextView
+    android:id="@+id/pageDescription"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_margin"
+    android:textSize="@dimen/description_text_size"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/pageTitle"
+    app:layout_constraintHorizontal_bias="0"
+    app:layout_constraintStart_toStartOf="@id/pageTitle"
+    app:layout_constraintTop_toBottomOf="@id/pageTitle" />
+</android.support.constraint.ConstraintLayout>
