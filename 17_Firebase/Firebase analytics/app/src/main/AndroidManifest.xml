@@ -46,8 +46,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="justfabcodes.greenthumb.com" android:scheme="https" /> <!-- Mandatory -->
-                <data android:host="justfabcodes.page.link" android:scheme="https" /> <!-- Optional as it will auto resolve -->
+                <!-- Opens an applink/deeplink in the form of <scheme>//<host> -->
+                <data
+                    android:host="justfabcodes.greenthumb.com"
+                    android:scheme="https" /> <!-- Mandatory -->
+                <data
+                    android:host="justfabcodes.page.link"
+                    android:scheme="https" /> <!-- Optional as it will auto resolve -->
             </intent-filter>
         </activity>
         <activity
