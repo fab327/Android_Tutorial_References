@@ -6,4 +6,6 @@
 
 [Leveraging ViewModel commit](https://github.com/fab327/Android_Tutorial_References/commit/4d7890825281d45c65af78c97cd5314870805913#diff-5f5761ef9a1345866316f4efdcfd9404) -> Diff on a simple way to leverage viewModels
 
+[Multiple viewTypes](https://github.com/fab327/Android_Tutorial_References/commit/55fa3bfe0e5f38183f388917830e75d78013dcb4#diff-5f5761ef9a1345866316f4efdcfd9404) -> Diff on leveraging multiple view types within the recyclerview
+
 ![Preview](/27_RetrofitSkeleton/Preview.png)
