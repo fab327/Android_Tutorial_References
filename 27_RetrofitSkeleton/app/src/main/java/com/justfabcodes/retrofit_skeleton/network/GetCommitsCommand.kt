@@ -1,11 +1,11 @@
 package com.justfabcodes.retrofit_skeleton.network
 
 import com.justfabcodes.retrofit_skeleton.api.Service
-import com.justfabcodes.retrofit_skeleton.models.CommitData
+import com.justfabcodes.retrofit_skeleton.models.RepoData
 
-class GetRepositoryCommand {
+class GetCommitsCommand {
 
-    suspend fun getRepositories(): CommitData {
+    suspend fun getCommits(): RepoData {
         return Service.githubService.retrieveCommits()
     }
 

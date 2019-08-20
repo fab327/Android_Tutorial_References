@@ -2,13 +2,19 @@ package com.justfabcodes.retrofit_skeleton.models
 
 import com.google.gson.annotations.SerializedName
 
-data class CommitData(var items: List<Item>)
+data class RepoData(val items: MutableList<Item>)
 
 data class Item(
     val id: Long?,
+
+    //Commits
     val commit: Commit?,
     @SerializedName("sha")
-    val commitHash: String?
+    val commitHash: String?,
+
+    //Repos
+    val name: String?,
+    val description: String
 )
 
 data class Commit(
