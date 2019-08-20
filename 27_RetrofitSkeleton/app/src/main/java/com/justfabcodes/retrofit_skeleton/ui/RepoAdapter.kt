@@ -33,18 +33,17 @@ class RepoAdapter(private val repoList: CommitData) : RecyclerView.Adapter<RepoA
      * - We can set any click listener in there
      *
      * - If we didn't have kotlin extensions we would have to add the following for each view property
-     * val authorName: TextView = view.findViewById(R.id.authorName)
+     * val author: TextView = view.findViewById(R.id.author)
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bindViewHolder(item: Item) {
             with(itemView) { // the view object in the constructor can be accessed via the itemView property
                 itemCommitHash.text = context.getString(R.string.commit_hash_text, item.commitHash)
-                itemAuthorName.text = context.getString(R.string.author_name_text, item.commit?.authorName?.name)
+                itemAuthorName.text = context.getString(R.string.author_name_text, item.commit?.author?.name)
                 itemCommitMessage.text = context.getString(R.string.commit_message_text, item.commit?.commitMessage)
             }
         }
-
     }
 
 }

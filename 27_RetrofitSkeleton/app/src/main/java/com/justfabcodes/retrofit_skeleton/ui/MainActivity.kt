@@ -1,7 +1,6 @@
 package com.justfabcodes.retrofit_skeleton.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,25 +9,15 @@ import com.justfabcodes.retrofit_skeleton.models.CommitData
 import com.justfabcodes.retrofit_skeleton.network.GetRepositoryCommand
 import com.justfabcodes.retrofit_skeleton.util.NetworkUtil
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
     private val getRepoCommand = GetRepositoryCommand()
-    private val callback = object : Callback<CommitData> {
-        override fun onResponse(call: Call<CommitData>, response: Response<CommitData>) {
-            response.isSuccessful.let {
-                val resultList = CommitData(response.body()?.items ?: emptyList())
-                (repositories.adapter as RepoAdapter).updateDataSet(resultList)
-            }
-        }
-
-        override fun onFailure(call: Call<CommitData>, t: Throwable) {
-            Log.d("TAG", "Something went wrong", t)
-        }
-    }
+    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +33,23 @@ class MainActivity : AppCompatActivity() {
 
         getData.setOnClickListener {
             if (NetworkUtil.isNetworkConnected(this@MainActivity)) {
-                getRepoCommand.getRepositories(callback)
+                //Coroutines recipes https://proandroiddev.com/android-coroutine-recipes-33467a4302e9
+                uiScope.launch {
+                    val result = withContext(Dispatchers.Default) {
+                        getRepoCommand.getRepositories()
+                    }
+                    (repositories.adapter as RepoAdapter).updateDataSet(result)
+
+                    /*
+                     * Alternatively with async/await
+                     *
+                        val result2 = async {
+                            getRepoCommand.getRepositories()
+                        }
+                        (repositories.adapter as RepoAdapter).updateDataSet(result2.await())
+                     */
+
+                }
             }
         }
     }

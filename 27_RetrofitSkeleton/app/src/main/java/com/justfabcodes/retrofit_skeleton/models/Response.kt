@@ -12,7 +12,7 @@ data class Item(
 )
 
 data class Commit(
-    val authorName: Author?,
+    val author: Author?,
     @SerializedName("message")
     val commitMessage: String?
 )
