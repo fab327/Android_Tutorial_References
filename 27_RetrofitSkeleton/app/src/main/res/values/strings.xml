@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RetrofitSkeleton</string>
+    <string name="main_activity_get_data">Get Data</string>
+
+    <string name="author_name_text">Author Name: %s</string>
+    <string name="commit_message_text">Commit Message: %s</string>
+    <string name="commit_hash_text">Commit Hash: %s</string>
 </resources>
