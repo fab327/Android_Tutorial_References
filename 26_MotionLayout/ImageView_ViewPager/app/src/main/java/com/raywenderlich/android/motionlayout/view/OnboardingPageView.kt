@@ -8,21 +8,18 @@ import com.raywenderlich.android.motionlayout.R
 import com.raywenderlich.android.motionlayout.page.OnboardingPage
 import kotlinx.android.synthetic.main.item_onboarding_page.view.*
 
-class OnboardingPageView : FrameLayout {
+/**
+ * Custom view to map data to UI element
+ */
+class OnboardingPageView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private lateinit var page: OnboardingPage
 
-    constructor(context: Context?) : super(context)
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
-
     init {
-        initUi()
-    }
-
-    private fun initUi() {
         LayoutInflater.from(context).inflate(R.layout.item_onboarding_page, this, true)
     }
 

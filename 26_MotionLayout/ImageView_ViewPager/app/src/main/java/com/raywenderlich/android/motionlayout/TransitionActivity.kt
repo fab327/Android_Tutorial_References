@@ -1,7 +1,7 @@
 package com.raywenderlich.android.motionlayout
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 class TransitionActivity : AppCompatActivity() {
 

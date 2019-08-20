@@ -2,7 +2,7 @@ package com.raywenderlich.android.motionlayout
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.motionlayout.page.OnboardingPage
 import com.raywenderlich.android.motionlayout.view.OnboardingPageView
 import com.raywenderlich.android.motionlayout.view.OnboardingView

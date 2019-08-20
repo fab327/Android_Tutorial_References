@@ -1,7 +1,7 @@
 package com.raywenderlich.android.motionlayout.page
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.raywenderlich.android.motionlayout.R
 
 enum class OnboardingPage(@StringRes val titleResource: Int,
