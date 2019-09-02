@@ -5,7 +5,7 @@ class LaunchAndSpinViewPropertyAnimatorAnimationActivity : BaseAnimationActivity
         rocket.animate()
             .translationY(-screenHeight)
             .rotationBy(360f)
-            .setDuration(BaseAnimationActivity.DEFAULT_ANIMATION_DURATION)
+            .setDuration(DEFAULT_ANIMATION_DURATION)
             .start()
     }
 }
