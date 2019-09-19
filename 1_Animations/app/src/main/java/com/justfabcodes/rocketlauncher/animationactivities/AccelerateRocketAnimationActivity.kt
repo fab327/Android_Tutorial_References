@@ -14,7 +14,7 @@ class AccelerateRocketAnimationActivity : BaseAnimationActivity() {
         }
 
         valueAnimator.interpolator = AccelerateInterpolator(1.5f)
-        valueAnimator.duration = BaseAnimationActivity.DEFAULT_ANIMATION_DURATION
+        valueAnimator.duration = DEFAULT_ANIMATION_DURATION
 
         valueAnimator.start()
     }

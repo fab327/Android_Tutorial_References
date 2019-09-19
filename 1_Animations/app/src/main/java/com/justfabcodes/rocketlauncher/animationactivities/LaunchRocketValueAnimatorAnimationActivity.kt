@@ -14,7 +14,7 @@ class LaunchRocketValueAnimatorAnimationActivity : BaseAnimationActivity() {
         }
 
         valueAnimator.interpolator = LinearInterpolator()
-        valueAnimator.duration = BaseAnimationActivity.DEFAULT_ANIMATION_DURATION
+        valueAnimator.duration = DEFAULT_ANIMATION_DURATION
         valueAnimator.start()
     }
 }

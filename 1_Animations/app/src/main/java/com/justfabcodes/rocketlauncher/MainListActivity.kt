@@ -3,6 +3,7 @@ package com.justfabcodes.rocketlauncher
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.justfabcodes.rocketlauncher.animationactivities.*
 import java.util.*
@@ -15,7 +16,7 @@ class MainListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_layout)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.layoutManager = android.support.v7.widget.LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val items = ArrayList<RocketAnimationItem>()
 

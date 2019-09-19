@@ -3,6 +3,8 @@ package com.justfabcodes.retrofit_skeleton.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.PrecomputedTextCompat
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.justfabcodes.retrofit_skeleton.R
@@ -96,7 +98,16 @@ class RepoAdapter(private val repoList: RepoData) : RecyclerView.Adapter<RepoAda
         fun bindCommit(item: Item, listener: RepoAdapterListener?) {
             with(itemView) {
                 // the view object in the constructor can be accessed via the itemView property
-                itemCommitHash.text = context.getString(R.string.commit_hash_text, item.commitHash)
+                /*
+                 * New API to optimize fetching of the text (not needed here but serving as reference)
+                 * isItemPrefetchEnabled must be enabled on the recyclerView#LayoutManager (true by default)
+                 * More info -> https://medium.com/androiddevelopers/prefetch-text-layout-in-recyclerview-4acf9103f438
+                 */
+                itemCommitHash.setTextFuture(PrecomputedTextCompat.getTextFuture(
+                    context.getString(R.string.commit_hash_text, item.commitHash),
+                    TextViewCompat.getTextMetricsParams(itemCommitHash),
+                    null //Executor
+                ))
                 itemAuthorName.text = context.getString(R.string.author_name_text, item.commit?.author?.name)
                 itemCommitMessage.text = context.getString(R.string.commit_message_text, item.commit?.commitMessage)
             }

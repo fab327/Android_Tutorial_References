@@ -19,7 +19,7 @@ class ColorAnimationActivity : BaseAnimationActivity() {
         objectAnimator.repeatCount = 1
         objectAnimator.repeatMode = ValueAnimator.REVERSE
 
-        objectAnimator.duration = BaseAnimationActivity.DEFAULT_ANIMATION_DURATION
+        objectAnimator.duration = DEFAULT_ANIMATION_DURATION
         objectAnimator.start()
     }
 }
