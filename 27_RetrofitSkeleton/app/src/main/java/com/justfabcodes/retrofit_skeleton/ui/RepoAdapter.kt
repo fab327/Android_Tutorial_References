@@ -12,6 +12,7 @@ import com.justfabcodes.retrofit_skeleton.models.Item
 import com.justfabcodes.retrofit_skeleton.models.RepoData
 import kotlinx.android.synthetic.main.recycler_view_commit_item.view.*
 import kotlinx.android.synthetic.main.recycler_view_repo_item.view.*
+import java.util.concurrent.Executors
 
 class RepoAdapter(private val repoList: RepoData) : RecyclerView.Adapter<RepoAdapter.ViewHolder>() {
 
@@ -106,7 +107,7 @@ class RepoAdapter(private val repoList: RepoData) : RecyclerView.Adapter<RepoAda
                 itemCommitHash.setTextFuture(PrecomputedTextCompat.getTextFuture(
                     context.getString(R.string.commit_hash_text, item.commitHash),
                     TextViewCompat.getTextMetricsParams(itemCommitHash),
-                    null //Executor
+                    Executors.newSingleThreadExecutor()
                 ))
                 itemAuthorName.text = context.getString(R.string.author_name_text, item.commit?.author?.name)
                 itemCommitMessage.text = context.getString(R.string.commit_message_text, item.commit?.commitMessage)
