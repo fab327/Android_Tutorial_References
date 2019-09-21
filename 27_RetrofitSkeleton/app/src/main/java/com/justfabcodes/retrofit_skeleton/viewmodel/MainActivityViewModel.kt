@@ -32,4 +32,13 @@ class MainActivityViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Deprecated way of doing things, use PagedListAdapter instead
+     */
+    fun shouldLoadMoreData(lastVisibleItem: Int, totalItemCount: Int) {
+        if ( lastVisibleItem == (totalItemCount - 1) ) {
+            //Do something more like loading more data
+        }
+    }
+
 }

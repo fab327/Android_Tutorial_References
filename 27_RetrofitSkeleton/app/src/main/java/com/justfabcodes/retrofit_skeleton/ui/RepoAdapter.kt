@@ -37,6 +37,8 @@ class RepoAdapter(private val repoList: RepoData) : RecyclerView.Adapter<RepoAda
         }
     }
 
+
+
     override fun getItemCount(): Int {
         return repoList.items.size
     }

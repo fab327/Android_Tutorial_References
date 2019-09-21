@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.justfabcodes.retrofit_skeleton.R
 import com.justfabcodes.retrofit_skeleton.models.RepoData
 import com.justfabcodes.retrofit_skeleton.network.GetCommitsCommand
@@ -40,6 +41,16 @@ class MainActivity : AppCompatActivity(), RepoAdapter.RepoAdapterListener {
         repositories.adapter = RepoAdapter(RepoData(mutableListOf())).also {
             it.setListener(this)
         }
+        repositories.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                val lastVisibleItem = (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                val itemCount = recyclerView.adapter?.itemCount ?: 0
+
+                viewModel.shouldLoadMoreData(lastVisibleItem, itemCount)
+            }
+        })
         repositories.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         (repositories.adapter as RepoAdapter).enableDragFunctionality(repositories)
 
