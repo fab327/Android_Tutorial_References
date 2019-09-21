@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), RepoAdapter.RepoAdapterListener {
                 viewModel.shouldLoadMoreData(lastVisibleItem, itemCount)
             }
         })
+//        repositories.itemAnimator -> See https://github.com/wasabeef/recyclerview-animators
         repositories.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         (repositories.adapter as RepoAdapter).enableDragFunctionality(repositories)
 
