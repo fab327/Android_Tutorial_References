@@ -14,7 +14,7 @@ data class Item(
 
     //Repos
     val name: String?,
-    val description: String
+    val description: String?
 )
 
 data class Commit(

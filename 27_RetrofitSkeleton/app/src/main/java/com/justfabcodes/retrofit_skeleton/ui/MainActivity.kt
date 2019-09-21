@@ -1,6 +1,7 @@
 package com.justfabcodes.retrofit_skeleton.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RepoAdapter.RepoAdapterListener {
 
     private val getRepoCommand = GetCommitsCommand()
     private val uiScope = CoroutineScope(Dispatchers.Main)
@@ -30,10 +31,17 @@ class MainActivity : AppCompatActivity() {
         initViews()
     }
 
+    override fun onItemClick(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
     private fun initViews() {
         repositories.layoutManager = LinearLayoutManager(this)
-        repositories.adapter = RepoAdapter(RepoData(mutableListOf()))
+        repositories.adapter = RepoAdapter(RepoData(mutableListOf())).also {
+            it.setListener(this)
+        }
         repositories.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        (repositories.adapter as RepoAdapter).enableDragFunctionality(repositories)
 
         getCommits.setOnClickListener {
             if (NetworkUtil.isNetworkConnected(this@MainActivity)) {

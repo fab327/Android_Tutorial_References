@@ -8,4 +8,10 @@
 
 [Multiple viewTypes](https://github.com/fab327/Android_Tutorial_References/commit/55fa3bfe0e5f38183f388917830e75d78013dcb4#diff-5f5761ef9a1345866316f4efdcfd9404) -> Diff on leveraging multiple view types within the recyclerview
 
+Changing position and dragging ->
+[RepoAdapter#enableDragFunctionality](/27_RetrofitSkeleton/app/src/main/java/com/justfabcodes/retrofit_skeleton/ui/RepoAdapter.kt)
+
+[Item click listener & item dragging implementation commit](https://github.com/fab327/Android_Tutorial_References/commit/2b249685fcb339d900440349e8a3376867c363b8) -> Diff on notifying the activity when a recyclerview item is interacted with and also leveraging ItemTouchHelper
+
+
 ![Preview](/27_RetrofitSkeleton/Preview.png)
