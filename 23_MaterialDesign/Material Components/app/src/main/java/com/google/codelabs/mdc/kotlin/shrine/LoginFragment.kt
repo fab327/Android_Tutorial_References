@@ -22,14 +22,9 @@ class LoginFragment : Fragment() {
 
         // Set an error if the password is less than 8 characters.
         view.next_button.setOnClickListener {
-            if (!isPasswordValid(password_edit_text.text)) {
-                password_text_input.error = getString(R.string.shr_error_password)
-            } else {
-                password_text_input.error = null // Clear the error
-                (activity as NavigationHost).navigateTo(
-                    ProductGridFragment(),
-                    false
-                ) // Navigate to the next Fragment
+            if (isPasswordValid(password_edit_text.text)) {
+                // Navigate to the next Fragment
+                (activity as NavigationHost).navigateTo(ProductGridFragment(), false)
             }
         }
 
@@ -37,6 +32,8 @@ class LoginFragment : Fragment() {
         view.password_edit_text.setOnKeyListener { _, _, _ ->
             if (isPasswordValid(password_edit_text.text)) {
                 password_text_input.error = null //Clear the error
+            } else {
+                password_text_input.error = getString(R.string.shr_error_password)
             }
             false
         }
