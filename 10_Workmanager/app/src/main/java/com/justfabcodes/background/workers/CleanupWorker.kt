@@ -22,13 +22,11 @@ class CleanupWorker(context: Context, params: WorkerParameters) : Worker(context
             val outputDirectory = File(applicationContext.filesDir, OUTPUT_PATH)
             if (outputDirectory.exists()) {
                 val entries = outputDirectory.listFiles()
-                entries?.let {
-                    entries.forEach {
-                        val name = it.name
-                        if (name.isNotEmpty() && name.endsWith(".png")) {
-                            val deleted = it.delete()
-                            Log.i(TAG, String.format("Deleted %s - %s", name, deleted))
-                        }
+                entries?.forEach {
+                    val name = it.name
+                    if (name.isNotEmpty() && name.endsWith(".png")) {
+                        val deleted = it.delete()
+                        Log.i(TAG, String.format("Deleted %s - %s", name, deleted))
                     }
                 }
             }

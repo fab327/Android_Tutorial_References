@@ -58,7 +58,7 @@ class BlurViewModel : ViewModel() {
 
         //Simple version
 //        val blurRequest = OneTimeWorkRequest.Builder(BlurWorker::class.java)
-//            .setInputData(createInputeDataForUri())
+//            .setInputData(createInputDataForUri())
 //            .build()
 //        continuation = continuation.then(blurRequest)
 
@@ -69,7 +69,7 @@ class BlurViewModel : ViewModel() {
             // Input the Uri if this is the first blur operation
             // After the fist blur operation the input will be the output of the previous blur operations
             if (i == 0) {
-                blurBuilder.setInputData(createInputeDataForUri())
+                blurBuilder.setInputData(createInputDataForUri())
             }
 
             continuation = continuation.then(blurBuilder.build())
@@ -135,7 +135,7 @@ class BlurViewModel : ViewModel() {
      *  Creates the input data bundle which includes the Uri to operate on
      *  @return Data which contains the Image Uri as a String
      */
-    private fun createInputeDataForUri(): Data {
+    private fun createInputDataForUri(): Data {
         val builder = Data.Builder()
         imageUri?.let {
             builder.putString(KEY_IMAGE_URI, imageUri?.toString())
