@@ -1,14 +1,13 @@
 package com.justfabcodes.rocketlauncher
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
 class RocketAdapter(private val context: Context, private val items: List<RocketAnimationItem>) :
-    RecyclerView.Adapter<RocketAdapter.RocketViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<RocketAdapter.RocketViewHolder>() {
 
   override fun getItemCount(): Int = items.size
 
@@ -24,7 +23,7 @@ class RocketAdapter(private val context: Context, private val items: List<Rocket
     holder.setTitleOnClickListener(context, items)
   }
 
-  class RocketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+  class RocketViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     val title: TextView = itemView.findViewById(android.R.id.text1)
 
     fun setTitleOnClickListener(context: Context, items: List<RocketAnimationItem>) {

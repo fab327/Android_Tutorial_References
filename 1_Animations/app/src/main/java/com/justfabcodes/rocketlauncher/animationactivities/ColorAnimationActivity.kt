@@ -3,7 +3,7 @@ package com.justfabcodes.rocketlauncher.animationactivities
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import com.justfabcodes.rocketlauncher.R
 
 class ColorAnimationActivity : BaseAnimationActivity() {

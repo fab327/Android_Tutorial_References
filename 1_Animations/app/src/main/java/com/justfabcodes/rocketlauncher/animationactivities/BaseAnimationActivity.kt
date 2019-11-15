@@ -1,10 +1,9 @@
 package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.view.View
-
+import androidx.appcompat.app.AppCompatActivity
 import com.justfabcodes.rocketlauncher.R
 import com.microsoft.appcenter.analytics.Analytics
 

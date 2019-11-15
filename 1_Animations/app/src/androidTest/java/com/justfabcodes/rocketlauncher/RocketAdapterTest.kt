@@ -1,6 +1,6 @@
 package com.justfabcodes.rocketlauncher
 
-import android.support.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert
 import org.junit.Test
 

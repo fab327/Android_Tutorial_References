@@ -12,4 +12,5 @@
   <string name="title_there_and_back">Fly there and back (Animation options)</string>
   <string name="title_jump_and_blink">Jump and blink (Animations in XML)</string>
   <string name="title_color_animation">Color animation</string>
+  <string name="title_physics_animation">Physics based animation</string>
 </resources>
