@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
-class EmotionalFaceView : View {
+class EmotionalFaceView @JvmOverloads constructor(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     companion object {
         private const val DEFAULT_FACE_COLOR = Color.YELLOW
@@ -36,7 +36,7 @@ class EmotionalFaceView : View {
             invalidate()    //Tells the system the view needs to be redrawn
         }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+    init {
         paint.isAntiAlias = true
         setupAttributes(attrs)
     }
@@ -92,11 +92,9 @@ class EmotionalFaceView : View {
         paint.style = Paint.Style.FILL
 
         val leftEyeRect = RectF(size * 0.32f, size * 0.23f, size * 0.43f, size * 0.50f)
-
         canvas.drawOval(leftEyeRect, paint)
 
         val rightEyeRect = RectF(size * 0.57f, size * 0.23f, size * 0.68f, size * 0.50f)
-
         canvas.drawOval(rightEyeRect, paint)
     }
 
