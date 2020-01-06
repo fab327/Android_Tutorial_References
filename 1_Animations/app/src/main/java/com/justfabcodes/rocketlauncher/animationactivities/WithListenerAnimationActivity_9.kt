@@ -3,7 +3,7 @@ package com.justfabcodes.rocketlauncher.animationactivities
 import android.animation.Animator
 import android.widget.Toast
 
-class WithListenerAnimationActivity : BaseAnimationActivity() {
+class WithListenerAnimationActivity_9 : BaseAnimationActivity() {
     override fun onStartAnimation() {
 //        val animator = ValueAnimator.ofFloat(0f, -screenHeight)
 //

@@ -1,21 +1,21 @@
 package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.ValueAnimator
-import android.view.animation.AccelerateInterpolator
+import android.view.animation.LinearInterpolator
 
-class AccelerateRocketAnimationActivity : BaseAnimationActivity() {
+class RotateRocketAnimationActivity_2 : BaseAnimationActivity() {
     override fun onStartAnimation() {
-        val valueAnimator = ValueAnimator.ofFloat(0f, -screenHeight)
+        val valueAnimator = ValueAnimator.ofFloat(0f, 360f)
 
         valueAnimator.addUpdateListener {
             val value = it.animatedValue as Float
-            rocket.translationY = value
-            doge.translationY = value
+
+            rocket.rotation = value
+            doge.rotation = value
         }
 
-        valueAnimator.interpolator = AccelerateInterpolator(1.5f)
+        valueAnimator.interpolator = LinearInterpolator()
         valueAnimator.duration = DEFAULT_ANIMATION_DURATION
-
         valueAnimator.start()
     }
 }

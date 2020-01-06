@@ -28,35 +28,35 @@ class MainListActivity : AppCompatActivity() {
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_launch_rocket),
-                Intent(this, LaunchRocketValueAnimatorAnimationActivity::class.java)
+                Intent(this, LaunchRocketValueAnimatorAnimationActivity_1::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_spin_rocket),
-                Intent(this, RotateRocketAnimationActivity::class.java)
+                Intent(this, RotateRocketAnimationActivity_2::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_accelerate_rocket),
-                Intent(this, AccelerateRocketAnimationActivity::class.java)
+                Intent(this, AccelerateRocketAnimationActivity_3::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_launch_rocket_objectanimator),
-                Intent(this, LaunchRocketObjectAnimatorAnimationActivity::class.java)
+                Intent(this, LaunchRocketObjectAnimatorAnimationActivity_4::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_color_animation),
-                Intent(this, ColorAnimationActivity::class.java)
+                Intent(this, ColorAnimationActivity_5::class.java)
             )
         )
 
@@ -70,42 +70,42 @@ class MainListActivity : AppCompatActivity() {
         items.add(
             RocketAnimationItem(
                 getString(R.string.launch_spin_viewpropertyanimator),
-                Intent(this, LaunchAndSpinViewPropertyAnimatorAnimationActivity::class.java)
+                Intent(this, LaunchAndSpinViewPropertyAnimatorAnimationActivity_7::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_with_doge),
-                Intent(this, FlyWithDogeAnimationActivity::class.java)
+                Intent(this, FlyWithDogeAnimationActivity_8::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_animation_events),
-                Intent(this, WithListenerAnimationActivity::class.java)
+                Intent(this, WithListenerAnimationActivity_9::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_there_and_back),
-                Intent(this, FlyThereAndBackAnimationActivity::class.java)
+                Intent(this, FlyThereAndBackAnimationActivity_10::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_jump_and_blink),
-                Intent(this, XmlAnimationActivity::class.java)
+                Intent(this, XmlAnimationActivity_11::class.java)
             )
         )
 
         items.add(
             RocketAnimationItem(
                 getString(R.string.title_physics_animation),
-                Intent(this, PhysicsAnimationActivity::class.java)
+                Intent(this, PhysicsAnimationActivity_12::class.java)
             )
         )
 

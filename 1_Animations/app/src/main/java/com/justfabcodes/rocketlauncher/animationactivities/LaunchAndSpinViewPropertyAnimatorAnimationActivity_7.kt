@@ -1,6 +1,6 @@
 package com.justfabcodes.rocketlauncher.animationactivities
 
-class LaunchAndSpinViewPropertyAnimatorAnimationActivity : BaseAnimationActivity() {
+class LaunchAndSpinViewPropertyAnimatorAnimationActivity_7 : BaseAnimationActivity() {
     override fun onStartAnimation() {
         rocket.animate()
             .translationY(-screenHeight)

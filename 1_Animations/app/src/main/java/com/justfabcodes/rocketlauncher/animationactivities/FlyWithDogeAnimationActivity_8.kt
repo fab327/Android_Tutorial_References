@@ -3,7 +3,7 @@ package com.justfabcodes.rocketlauncher.animationactivities
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 
-class FlyWithDogeAnimationActivity : BaseAnimationActivity() {
+class FlyWithDogeAnimationActivity_8 : BaseAnimationActivity() {
     override fun onStartAnimation() {
         val positionAnimator = ValueAnimator.ofFloat(0f, -screenHeight)
         positionAnimator.addUpdateListener {

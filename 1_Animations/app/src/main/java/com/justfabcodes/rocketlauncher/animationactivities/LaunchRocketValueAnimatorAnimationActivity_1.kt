@@ -3,15 +3,14 @@ package com.justfabcodes.rocketlauncher.animationactivities
 import android.animation.ValueAnimator
 import android.view.animation.LinearInterpolator
 
-class RotateRocketAnimationActivity : BaseAnimationActivity() {
+class LaunchRocketValueAnimatorAnimationActivity_1 : BaseAnimationActivity() {
     override fun onStartAnimation() {
-        val valueAnimator = ValueAnimator.ofFloat(0f, 360f)
+        val valueAnimator = ValueAnimator.ofFloat(0f, -screenHeight)
 
         valueAnimator.addUpdateListener {
-            val value = it.animatedValue as Float
+            rocket.translationY = it.animatedValue as Float
+            doge.translationY = it.animatedValue as Float
 
-            rocket.rotation = value
-            doge.rotation = value
         }
 
         valueAnimator.interpolator = LinearInterpolator()

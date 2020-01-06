@@ -1,16 +1,16 @@
 <resources>
   <string name="app_name">Rocket Launch</string>
   <string name="title_no_animation">No animation</string>
-  <string name="title_launch_rocket">Launch a rocket (Value Animator)</string>
-  <string name="title_spin_rocket">Rotate a rocket</string>
-  <string name="title_accelerate_rocket">Accelerate a rocket</string>
-  <string name="title_launch_rocket_objectanimator">Launch a rocket (ObjectAnimator)</string>
-  <string name="launch_spin">Launch and spin (AnimatorSet)</string>
-  <string name="launch_spin_viewpropertyanimator">Launch and spin (ViewPropertyAnimator)</string>
-  <string name="title_with_doge">Animating two objects</string>
-  <string name="title_animation_events">Animation events (with listener)</string>
-  <string name="title_there_and_back">Fly there and back (Animation options)</string>
-  <string name="title_jump_and_blink">Jump and blink (Animations in XML)</string>
-  <string name="title_color_animation">Color animation</string>
-  <string name="title_physics_animation">Physics based animation</string>
+  <string name="title_launch_rocket">Launch a rocket (Value Animator) - 1</string>
+  <string name="title_spin_rocket">Rotate a rocket - 2</string>
+  <string name="title_accelerate_rocket">Accelerate a rocket - 3</string>
+  <string name="title_launch_rocket_objectanimator">Launch a rocket (ObjectAnimator) - 4</string>
+  <string name="launch_spin">Launch and spin (AnimatorSet) - 6</string>
+  <string name="launch_spin_viewpropertyanimator">Launch and spin (ViewPropertyAnimator) - 7</string>
+  <string name="title_with_doge">Animating two objects - 8</string>
+  <string name="title_animation_events">Animation events (with listener) - 9</string>
+  <string name="title_there_and_back">Fly there and back (Animation options) - 10</string>
+  <string name="title_jump_and_blink">Jump and blink (Animations in XML) - 11</string>
+  <string name="title_color_animation">Color animation - 5</string>
+  <string name="title_physics_animation">Physics based animation - 12</string>
 </resources>

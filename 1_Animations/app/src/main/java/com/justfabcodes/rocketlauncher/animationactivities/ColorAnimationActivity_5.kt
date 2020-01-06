@@ -6,7 +6,7 @@ import android.animation.ValueAnimator
 import androidx.core.content.ContextCompat
 import com.justfabcodes.rocketlauncher.R
 
-class ColorAnimationActivity : BaseAnimationActivity() {
+class ColorAnimationActivity_5 : BaseAnimationActivity() {
     override fun onStartAnimation() {
         val objectAnimator = ObjectAnimator.ofObject(
             frameLayout,

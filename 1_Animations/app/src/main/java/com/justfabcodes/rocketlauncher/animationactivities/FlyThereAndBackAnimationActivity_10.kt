@@ -2,7 +2,7 @@ package com.justfabcodes.rocketlauncher.animationactivities
 
 import android.animation.ValueAnimator
 
-class FlyThereAndBackAnimationActivity : BaseAnimationActivity() {
+class FlyThereAndBackAnimationActivity_10 : BaseAnimationActivity() {
     override fun onStartAnimation() {
         val animator = ValueAnimator.ofFloat(0f, -screenHeight)
 

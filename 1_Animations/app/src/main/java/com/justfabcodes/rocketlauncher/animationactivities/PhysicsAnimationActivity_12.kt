@@ -6,7 +6,7 @@ import androidx.dynamicanimation.animation.SpringForce.DAMPING_RATIO_HIGH_BOUNCY
 import androidx.dynamicanimation.animation.SpringForce.STIFFNESS_VERY_LOW
 
 
-class PhysicsAnimationActivity : BaseAnimationActivity() {
+class PhysicsAnimationActivity_12 : BaseAnimationActivity() {
     override fun onStartAnimation() {
 
         SpringAnimation(rocket, DynamicAnimation.TRANSLATION_Y, -screenHeight / 2).apply {

@@ -5,7 +5,7 @@ import android.animation.AnimatorSet
 import com.justfabcodes.rocketlauncher.R
 import com.microsoft.appcenter.analytics.Analytics
 
-class XmlAnimationActivity : BaseAnimationActivity() {
+class XmlAnimationActivity_11 : BaseAnimationActivity() {
     override fun onStartAnimation() {
         val rocketAnimatorSet =
             AnimatorInflater.loadAnimator(this, R.animator.jump_and_blink) as AnimatorSet
@@ -18,7 +18,7 @@ class XmlAnimationActivity : BaseAnimationActivity() {
         val bothAnimatorSet = AnimatorSet()
         bothAnimatorSet.playTogether(rocketAnimatorSet, dogeAnimatorSet)
 
-        bothAnimatorSet.duration = BaseAnimationActivity.DEFAULT_ANIMATION_DURATION
+        bothAnimatorSet.duration = DEFAULT_ANIMATION_DURATION
         bothAnimatorSet.start()
 
         Analytics.trackEvent("Animation started", mutableMapOf("XmlAnimation" to "Yes"))

@@ -28,23 +28,23 @@
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketValueAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketValueAnimatorAnimationActivity_1"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.RotateRocketAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.RotateRocketAnimationActivity_2"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.AccelerateRocketAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.AccelerateRocketAnimationActivity_3"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketObjectAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchRocketObjectAnimatorAnimationActivity_4"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.ColorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.ColorAnimationActivity_5"
             android:label="@string/app_name" />
 
         <activity
@@ -52,27 +52,27 @@
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchAndSpinViewPropertyAnimatorAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.LaunchAndSpinViewPropertyAnimatorAnimationActivity_7"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyWithDogeAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyWithDogeAnimationActivity_8"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.WithListenerAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.WithListenerAnimationActivity_9"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyThereAndBackAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.FlyThereAndBackAnimationActivity_10"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.XmlAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.XmlAnimationActivity_11"
             android:label="@string/app_name" />
 
         <activity
-            android:name="com.justfabcodes.rocketlauncher.animationactivities.PhysicsAnimationActivity"
+            android:name="com.justfabcodes.rocketlauncher.animationactivities.PhysicsAnimationActivity_12"
             android:label="@string/app_name" />
 
     </application>
