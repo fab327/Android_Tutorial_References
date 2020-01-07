@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.security.crypto.EncryptedSharedPreferences
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,6 +21,14 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         setContentView(R.layout.activity_main)
 
         setupListeners()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (BiometricManager.from(this).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
+            Toast.makeText(this, "It doesn't seem like this device is setup with Biometric", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onStop() {
