@@ -23,13 +23,13 @@ import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
 /**
- * tableName -> without it being set, the default name would be weatherentry
+ * tableName -> without it being set, the default name would be weather entry
  * indices -> gives a special directive. In this case we should only store one entry per date
  *
  * We need 2 separate constructors here because the network parser doesn't care for the id property
  * and therefore that constructor is annotated as such so that Room knows which one to use for db insertion
  */
-@Entity(tableName = "weather", indices = [Index(value = "date", unique = true)])
+@Entity(tableName = "weather", indices = [Index("date", unique = true)])
 data class WeatherEntry(@PrimaryKey(autoGenerate = true) var id: Int,
                         var weatherIconId: Int,
                         var date: Date,
