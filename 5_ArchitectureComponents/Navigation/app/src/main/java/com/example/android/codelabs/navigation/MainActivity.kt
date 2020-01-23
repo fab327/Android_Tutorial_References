@@ -111,8 +111,7 @@ class MainActivity : AppCompatActivity() {
         sideNavView?.setupWithNavController(navController)
     }
 
-    private fun setupActionBar(navController: NavController,
-                               appBarConfig : AppBarConfiguration) {
+    private fun setupActionBar(navController: NavController, appBarConfig : AppBarConfiguration) {
         // This allows NavigationUI to decide what label to show in the action bar
         // By using appBarConfig, it will also determine whether to
         // show the up arrow or drawer menu icon

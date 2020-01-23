@@ -45,7 +45,7 @@ class FlowStepFragment : Fragment() {
                 2 -> inflater.inflate(R.layout.flow_step_two_fragment, container, false)
                 else -> inflater.inflate(R.layout.flow_step_one_fragment, container, false)
             }
-        }
+        } ?: run { return inflater.inflate(R.layout.flow_step_one_fragment, container, false)}
 
     }
 
