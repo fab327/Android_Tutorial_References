@@ -83,10 +83,7 @@ class MainActivity : AppCompatActivity() {
                     try {
                         camera.takePicture()
                     } catch (e: Exception) {
-                        Toast.makeText(
-                            this, getString(R.string.error_taking_picture), Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        Toast.makeText(this, getString(R.string.error_taking_picture), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
