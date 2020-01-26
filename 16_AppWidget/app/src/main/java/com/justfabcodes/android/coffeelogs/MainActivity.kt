@@ -34,11 +34,11 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,8 +87,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveCoffeeIntake(intake: Int) {
-        val mySnackbar = Snackbar.make(findViewById<CoordinatorLayout>(R.id.main_coordinator),
-                R.string.intake_saved, Snackbar.LENGTH_LONG)
+        val mySnackbar = Snackbar.make(main_coordinator, R.string.intake_saved, Snackbar.LENGTH_LONG)
         mySnackbar.setAction(R.string.undo_string, MyUndoListener(intake))
         mySnackbar.show()
 
