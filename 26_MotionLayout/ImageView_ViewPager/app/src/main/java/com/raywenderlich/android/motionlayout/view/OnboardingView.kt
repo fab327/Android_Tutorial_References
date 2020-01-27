@@ -41,9 +41,7 @@ class OnboardingView @JvmOverloads constructor(
         nextButton.setOnClickListener { viewPager.setCurrentItem(viewPager.currentItem + 1, true) }
         finishButton.setOnClickListener {
             Toast.makeText(context, R.string.onboarding_finished, Toast.LENGTH_SHORT).show()
-            listener?.let {
-                it.notifyFinish()
-            }
+            listener?.notifyFinish()
         }
     }
 
