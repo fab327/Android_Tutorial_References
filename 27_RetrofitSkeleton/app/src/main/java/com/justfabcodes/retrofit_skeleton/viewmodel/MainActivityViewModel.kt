@@ -3,8 +3,7 @@ package com.justfabcodes.retrofit_skeleton.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.justfabcodes.retrofit_skeleton.models.RepoData
-import com.justfabcodes.retrofit_skeleton.network.GetCommitsCommand
-import com.justfabcodes.retrofit_skeleton.network.GetRepositoriesCommand
+import com.justfabcodes.retrofit_skeleton.network.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,13 +21,14 @@ class MainActivityViewModel : ViewModel() {
 
     fun updateCommitList() {
         backgroundScope.launch {
-            commits.postValue(GetCommitsCommand().getCommits())
+            commits.postValue(GetCommitsCommand().getCommits(retrieveCommitsQueryParams))
         }
     }
 
     fun updateReposList() {
         backgroundScope.launch {
-            repos.postValue(GetRepositoriesCommand().getRepositories())
+            repos.postValue(GetRepositoriesCommand()
+                .getRepositories(searchRepositoryQParams, searchRepositorySortParams, searchRepositoryOrderParams))
         }
     }
 
