@@ -4,15 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.justfabcodes.retrofit_skeleton.models.RepoData
 import com.justfabcodes.retrofit_skeleton.network.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MainActivityViewModel : ViewModel() {
 
     var commits: MutableLiveData<RepoData>
     var repos : MutableLiveData<RepoData>
-    private val backgroundScope = CoroutineScope(Dispatchers.Default)
+    private val backgroundScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     init {
         commits = MutableLiveData()
@@ -30,6 +28,11 @@ class MainActivityViewModel : ViewModel() {
             repos.postValue(GetRepositoriesCommand()
                 .getRepositories(searchRepositoryQParams, searchRepositorySortParams, searchRepositoryOrderParams))
         }
+    }
+
+    override fun onCleared() {
+        backgroundScope.cancel()
+        super.onCleared()
     }
 
     /**
