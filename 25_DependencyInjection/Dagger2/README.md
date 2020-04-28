@@ -5,6 +5,7 @@
 [Implementation commit](https://github.com/fab327/Android_Tutorial_References/commit/dbe75282b86f7b11b79ad416aeeb4d7261f02e35)
 
 
+----------------------------------------------------------------------------------------
 More advanced tutorials
 
 [Codelab](https://codelabs.developers.google.com/codelabs/android-dagger/#0)
