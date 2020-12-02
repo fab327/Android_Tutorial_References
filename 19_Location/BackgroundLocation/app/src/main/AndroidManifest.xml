@@ -31,8 +31,10 @@
             </intent-filter>
         </activity>
 
+        <!-- Line 37 -> Android 10/11 requirement-->
         <service
             android:name="com.google.android.gms.location.sample.backgroundlocationupdates.LocationUpdatesIntentService"
+            android:foregroundServiceType="location"
             android:exported="false" />
 
         <receiver android:name="com.google.android.gms.location.sample.backgroundlocationupdates.LocationUpdatesBroadcastReceiver"
